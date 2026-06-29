@@ -31,47 +31,53 @@ export default function Home() {
 
   const projects = [
     {
-      title: 'VibeSync Collaborative Workspace',
-      description: 'A dynamic real-time collaborative tool with workspaces, integrated chat, and media sharing. Built using cutting edge React hooks and modern CSS layout engines.',
-      tags: ['Next.js', 'React', 'CSS Grid', 'Websockets'],
-      category: 'Fullstack',
-      githubLink: 'https://github.com',
-      liveLink: 'https://vercel.com',
+      title: 'CT Scan Radiation Exposure Simulator',
+      description: 'Estimation of radiation dose for COVID-19 patients undergoing computed tomography exams to optimize patient health safety. Published in Radiation Physics and Chemistry.',
+      tags: ['MATLAB', 'Medical Imaging', 'Data Analysis'],
+      category: 'Research',
+      githubLink: 'https://github.com/ddaniiiiell',
+      liveLink: 'https://doi.org/10.1016/j.radphyschem.2024.111773',
     },
     {
-      title: 'DevScope Repo Visualizer',
-      description: 'An interactive analytical dashboard that visualizes GitHub commit histories, language usage patterns, and repository trends using dynamic graphing engines.',
-      tags: ['React', 'SVG Vector Graphics', 'GitHub API'],
-      category: 'Frontend',
-      githubLink: 'https://github.com',
-      liveLink: 'https://vercel.com',
+      title: 'Monkey Anatomical Posture Modeler',
+      description: 'Organ dose simulations for voxel-based monkey anatomical models under external photon fields. Published in Nuclear Engineering and Technology.',
+      tags: ['C++', 'Java', 'Voxel Modeling', 'Simulation'],
+      category: 'Computational Modeling',
+      githubLink: 'https://github.com/ddaniiiiell',
+      liveLink: 'https://doi.org/10.1016/j.net.2025.103603',
     },
     {
-      title: 'AuraUI Design System',
-      description: 'A headless component library focusing on clean micro-interactions, dark mode default glassmorphism, and compliance with high-contrast accessibility standards.',
-      tags: ['CSS Variables', 'React', 'A11y Standards'],
-      category: 'Design System',
-      githubLink: 'https://github.com',
-      liveLink: 'https://vercel.com',
+      title: 'Internal Radiation Source Solver',
+      description: 'Calculates S-values for voxel monkey computational models exposed to internally distributed radiation sources. Published in Radiation Physics and Chemistry.',
+      tags: ['Python', 'Applied Physics', 'Monte Carlo Sim'],
+      category: 'Computational Modeling',
+      githubLink: 'https://github.com/ddaniiiiell',
+      liveLink: 'https://doi.org/10.1016/j.radphyschem.2025.112549',
     },
   ];
 
   const experience = [
     {
-      role: 'Senior Frontend Architect',
-      company: 'InnovateTech Solutions',
-      date: '2024 - Present',
-      description: 'Spearheaded implementation of accessible design systems and unified React architectures. Spearheaded migration of client portals to Next.js resulting in a 40% increase in core performance metrics.',
+      role: 'Academic Research Intern',
+      company: 'Inova Fairfax Hospital',
+      date: '2026 - Present',
+      description: 'Collaborating on medical imaging analyses and clinical research workflows under the mentorship of Dr. In H. Yeo.',
     },
     {
-      role: 'Full-Stack Developer',
-      company: 'WebDev Studio',
-      date: '2022 - 2024',
-      description: 'Crafted dynamic web interfaces and scalable backend serverless microservices. Built high-fidelity interactive client portfolios, interactive search engines, and real-time form flows.',
+      role: 'Biomedical Research Intern',
+      company: 'East Carolina University',
+      date: '2023 - 2024',
+      description: 'Conducted dose estimation modeling for COVID-19 computed tomography scans and voxel monkey anatomy models under the mentorship of Dr. Jaewon Jung. Co-authored three publications in peer-reviewed scientific journals.',
+    },
+    {
+      role: 'Robotics Program Scholar',
+      company: 'GEMS (U.S. Army sponsored)',
+      date: '2023',
+      description: 'Participated in the Gains in the Education of Mathematics and Science robotics program developing logic controls.',
     },
   ];
 
-  const filterCategories = ['All', 'Frontend', 'Fullstack', 'Design System'];
+  const filterCategories = ['All', 'Research', 'Computational Modeling'];
 
   const filteredProjects = selectedFilter === 'All' 
     ? projects 
@@ -85,12 +91,12 @@ export default function Home() {
         {/* Hero Section */}
         <section id="home" className="hero-section">
           <div className="hero-content">
-            <span className="hero-badge">Available for Work</span>
+            <span className="hero-badge">Applied Physics & Bioengineering</span>
             <h1 className="hero-title">
-              Hi, I'm <span>Daniel Lee</span>
+              Hi, I'm <span>Daniel D. Lee</span>
             </h1>
             <p className="hero-subtitle">
-              I build high-fidelity interactive web applications with clean architecture and modern user experiences.
+              Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.
             </p>
             <div className="hero-cta">
               <a href="#projects" className="btn-primary">
@@ -226,21 +232,21 @@ export default function Home() {
                   <div className="contact-detail-icon"><Mail size={20} /></div>
                   <div className="contact-detail-content">
                     <span className="contact-detail-label">Email</span>
-                    <span className="contact-detail-value">daniel.lee@example.com</span>
+                    <span className="contact-detail-value">danieldoowonlee@gmail.com</span>
                   </div>
                 </div>
                 <div className="contact-detail-item">
                   <div className="contact-detail-icon"><Phone size={20} /></div>
                   <div className="contact-detail-content">
                     <span className="contact-detail-label">Phone</span>
-                    <span className="contact-detail-value">+1 (555) 019-2834</span>
+                    <span className="contact-detail-value">240-550-3763</span>
                   </div>
                 </div>
                 <div className="contact-detail-item">
                   <div className="contact-detail-icon"><MapPin size={20} /></div>
                   <div className="contact-detail-content">
                     <span className="contact-detail-label">Location</span>
-                    <span className="contact-detail-value">Boston, MA</span>
+                    <span className="contact-detail-value">Rockville, MD</span>
                   </div>
                 </div>
               </div>
@@ -256,13 +262,13 @@ export default function Home() {
       <footer className="footer-section">
         <div className="container footer-wrapper">
           <p className="footer-text">
-            © {new Date().getFullYear()} Daniel Lee. All rights reserved.
+            © {new Date().getFullYear()} Daniel D. Lee. All rights reserved.
           </p>
           <div className="footer-socials">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub">
+            <a href="https://github.com/ddaniiiiell" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub">
               <Github size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">
+            <a href="https://linkedin.com/in/danieldoowonlee/" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
           </div>
