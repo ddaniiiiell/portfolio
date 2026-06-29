@@ -2,7 +2,7 @@
 
 import { Github, ExternalLink, Code } from 'lucide-react';
 
-export default function ProjectCard({ title, description, tags, githubLink, liveLink, imageUrl }) {
+export default function ProjectCard({ title, date, description, tags, githubLink, liveLink, imageUrl }) {
   return (
     <div className="project-card">
       <div className="project-image-container">
@@ -19,6 +19,21 @@ export default function ProjectCard({ title, description, tags, githubLink, live
       </div>
       <div className="project-content">
         <h3 className="project-title">{title}</h3>
+        {date && (
+          <span 
+            className="project-date" 
+            style={{ 
+              display: 'block', 
+              fontSize: '0.85rem', 
+              color: 'var(--text-secondary)', 
+              marginBottom: '0.75rem', 
+              fontFamily: 'var(--font-display)', 
+              fontWeight: '500' 
+            }}
+          >
+            {date}
+          </span>
+        )}
         <p className="project-description">{description}</p>
         <div className="project-tags">
           {tags.map((tag) => (

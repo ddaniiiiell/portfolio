@@ -33,6 +33,7 @@ export default function Home() {
   const projects = [
     {
       title: 'CT Scan Radiation Exposure Simulator',
+      date: 'Published: 2024',
       description: 'Estimation of radiation dose for COVID-19 patients undergoing computed tomography exams to optimize patient health safety. Published in Radiation Physics and Chemistry.',
       tags: ['MATLAB', 'Medical Imaging', 'Data Analysis'],
       category: 'Research',
@@ -42,6 +43,7 @@ export default function Home() {
     },
     {
       title: 'Monkey Anatomical Posture Modeler',
+      date: 'Published: 2025',
       description: 'Organ dose simulations for voxel-based monkey anatomical models under external photon fields. Published in Nuclear Engineering and Technology.',
       tags: ['C++', 'Java', 'Voxel Modeling', 'Simulation'],
       category: 'Computational Modeling',
@@ -51,6 +53,7 @@ export default function Home() {
     },
     {
       title: 'Internal Radiation Source Solver',
+      date: 'Published: 2025',
       description: 'Calculates S-values for voxel monkey computational models exposed to internally distributed radiation sources. Published in Radiation Physics and Chemistry.',
       tags: ['Python', 'Applied Physics', 'Monte Carlo Sim'],
       category: 'Computational Modeling',
