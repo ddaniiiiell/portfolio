@@ -2,9 +2,37 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
+// Generates a mathematically perfect circular logarithmic spiral path
+const generateLogSpiralPath = () => {
+  const cx = 400; // Center X
+  const cy = 340; // Center Y
+  let path = "M 400,0 L 400,120 ";
+  
+  const r0 = 220; // Starting radius at start of spiral (400, 120) relative to (400, 340)
+  const k = 0.125; // Decay rate
+  const startAngle = -Math.PI / 2; // Starts pointing straight up
+  const points = 240;
+  const maxTheta = Math.PI * 6.5; // 3.25 full circular loops
+  
+  for (let i = 0; i <= points; i++) {
+    const t = i / points;
+    const theta = t * maxTheta;
+    const angle = startAngle + theta; // Clockwise spiral
+    const r = r0 * Math.exp(-k * theta);
+    
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    
+    path += `L ${x.toFixed(1)} ${y.toFixed(1)} `;
+  }
+  return path;
+};
+
+const pathData = generateLogSpiralPath();
+
 export default function BubbleChamber() {
   const pathRef = useRef(null);
-  const [dotPos, setDotPos] = useState({ x: 400, y: 0, opacity: 0, size: 6 });
+  const [dotPos, setDotPos] = useState({ x: 400, y: 0, opacity: 0, size: 6.5 });
 
   useEffect(() => {
     const path = pathRef.current;
@@ -47,9 +75,6 @@ export default function BubbleChamber() {
     return () => cancelAnimationFrame(animationId);
   }, []);
 
-  // Standard vertical entry that curls into a decay spiral
-  const pathData = "M 400,0 L 400,150 C 400,220 620,220 620,340 C 620,460 180,460 180,340 C 180,240 550,240 550,340 C 550,410 260,410 260,340 C 260,290 480,290 480,340 C 480,380 320,380 320,340 C 320,310 420,310 420,340";
-
   return (
     <div 
       className="bubble-chamber-container"
@@ -62,7 +87,7 @@ export default function BubbleChamber() {
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: -1,
-        opacity: 0.22,
+        opacity: 1, // Opacity is controlled at the element level so the glow isn't dimmed by the container
       }}
     >
       <svg 
@@ -77,7 +102,7 @@ export default function BubbleChamber() {
         {/* Glow Filter for the decaying particle */}
         <defs>
           <filter id="glow-particle" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feGaussianBlur stdDeviation="5" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -92,27 +117,39 @@ export default function BubbleChamber() {
           stroke="currentColor" 
           strokeWidth="1.2"
           strokeLinecap="round"
-          opacity="0.35"
+          opacity="0.18" // Very faint, subtle background track
         />
 
         {/* Dotted path details next to it for depth */}
         <path 
-          d="M 405,0 L 405,140" 
+          d="M 405,0 L 405,110" 
           stroke="currentColor" 
           strokeWidth="0.8" 
           strokeDasharray="4 8"
-          opacity="0.25"
+          opacity="0.12"
         />
 
-        {/* Glowing Decaying Particle Dot */}
+        {/* Glowing Decaying Particle Dot - Outer Halo Glow */}
         <circle 
           cx={dotPos.x} 
           cy={dotPos.y} 
-          r={dotPos.size} 
+          r={dotPos.size * 1.5} 
           fill="currentColor" 
           filter="url(#glow-particle)"
           style={{
-            opacity: dotPos.opacity,
+            opacity: dotPos.opacity * 0.7,
+            transition: 'opacity 0.05s ease',
+          }}
+        />
+
+        {/* Glowing Decaying Particle Dot - Inner High-intensity Core */}
+        <circle 
+          cx={dotPos.x} 
+          cy={dotPos.y} 
+          r={dotPos.size * 0.6} 
+          fill="#ffffff" 
+          style={{
+            opacity: dotPos.opacity * 0.95,
             transition: 'opacity 0.05s ease',
           }}
         />
