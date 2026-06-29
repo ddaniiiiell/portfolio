@@ -96,7 +96,20 @@ export default function Home() {
           <div className="hero-content">
             <span className="hero-badge">Applied Physics</span>
             <h1 className="hero-title">
-              Hi, I'm <span>Daniel Lee</span>
+              Hi, I'm{' '}
+              <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
+                <span className="hero-star hero-star-left">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
+                  </svg>
+                </span>
+                Daniel Lee
+                <span className="hero-star hero-star-right">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
+                  </svg>
+                </span>
+              </span>
             </h1>
             <p className="hero-subtitle">
               Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.

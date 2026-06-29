@@ -1,5 +1,6 @@
 import './globals.css';
 import GridPattern from './components/GridPattern';
+import MouseTrail from './components/MouseTrail';
 
 export const metadata = {
   title: 'Daniel Lee | Interactive Portfolio & Developer Showcase',
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body>
         <div className="grain-overlay" />
         <GridPattern />
+        <MouseTrail />
         <div className="glow-bg">
           <div className="glow-circle glow-1 animate-glow" style={{ animationDelay: '0s' }}></div>
           <div className="glow-circle glow-2 animate-glow" style={{ animationDelay: '2s' }}></div>

@@ -1156,6 +1156,31 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
 }
 
+/* 5. Hero Headline Sparkle Stars */
+.hero-name-container {
+  position: relative;
+  display: inline-block;
+  color: var(--accent-primary);
+}
+
+.hero-star {
+  position: absolute;
+  color: var(--accent-primary);
+  pointer-events: none;
+  animation: starTwinkle 4s ease-in-out infinite;
+}
+
+.hero-star-left {
+  top: -0.5em;
+  left: -0.6em;
+}
+
+.hero-star-right {
+  bottom: -0.2em;
+  right: -0.6em;
+  animation-delay: 2s;
+}
+
 
 
 
