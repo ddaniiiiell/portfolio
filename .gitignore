@@ -31,3 +31,7 @@ build
 
 # vercel
 .vercel
+
+# VS Code workspaces
+*.code-workspace
+
