@@ -39,13 +39,21 @@ export default function GridPattern() {
 
     // Initialize a dynamic array of stars
     let activeStars = [];
+    const pulseSpeed = 0.042; // Slower, natural breathing cycle frequency (~2.5s per pulse)
+    const cycleLength = 2 * Math.PI / pulseSpeed;
+
     // Populate initial stars so the screen is decorated immediately on launch
     for (let i = 0; i < 8; i++) {
+      const targetPulses = 4 + Math.floor(Math.random() * 4); // 4 to 7 pulses before dying
+      const maxLife = targetPulses * cycleLength;
       activeStars.push({
         xRatio: Math.random(),
         yRatio: Math.random(),
-        maxLife: 200 + Math.random() * 150,
-        life: Math.random() * 150, // start at randomized lifecycle points
+        pulseSpeed,
+        cycleLength,
+        targetPulses,
+        maxLife,
+        life: Math.random() * (maxLife - cycleLength), // randomize initial stages
         baseSize: 3 + Math.random() * 4,
       });
     }
@@ -112,8 +120,8 @@ export default function GridPattern() {
         }
       }
 
-      // Gently pulse grid opacity
-      const gridBaseOpacity = 0.018 + Math.sin(time * 0.5) * 0.004;
+      // Gently pulse grid opacity (made slightly more visible to enhance warp visuals)
+      const gridBaseOpacity = 0.032 + Math.sin(time * 0.5) * 0.006;
       ctx.strokeStyle = '#e6e4de';
       ctx.lineWidth = 1;
 
@@ -141,10 +149,15 @@ export default function GridPattern() {
 
       // Spawn new stars actively to keep the ambient field alive
       if (activeStars.length < 15 && Math.random() < 0.015) {
+        const targetPulses = 4 + Math.floor(Math.random() * 4); // 4 to 7 pulses
+        const maxLife = targetPulses * cycleLength;
         activeStars.push({
           xRatio: Math.random(),
           yRatio: Math.random(),
-          maxLife: 250 + Math.random() * 150,
+          pulseSpeed,
+          cycleLength,
+          targetPulses,
+          maxLife,
           life: 0,
           baseSize: 3 + Math.random() * 4,
         });
@@ -172,17 +185,16 @@ export default function GridPattern() {
           }
         }
 
-        // Calculate opacity based on lifecycle (fade in first 15%, fade out last 15%)
-        const ratio = star.life / star.maxLife;
+        // Calculate opacity based on lifecycle (fade in during 1st cycle, fade out during last cycle)
         let alpha = 1;
-        if (ratio < 0.15) {
-          alpha = ratio / 0.15;
-        } else if (ratio > 0.85) {
-          alpha = (1 - ratio) / 0.15;
+        if (star.life < star.cycleLength) {
+          alpha = star.life / star.cycleLength;
+        } else if (star.life > star.maxLife - star.cycleLength) {
+          alpha = (star.maxLife - star.life) / star.cycleLength;
         }
 
-        const pulse = Math.sin(time * 2 + star.life * 0.05);
-        const opacity = alpha * (0.12 + (pulse + 1) * 0.28);
+        const pulse = Math.sin(star.life * star.pulseSpeed);
+        const opacity = Math.max(0, alpha * (0.12 + (pulse + 1) * 0.28));
         const starRadius = star.baseSize + (pulse + 1) * 1.0;
         drawSparkle(ctx, sx, sy, starRadius, opacity);
       });
