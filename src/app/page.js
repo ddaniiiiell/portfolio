@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
 import ContactForm from './components/ContactForm';
 import CTHelix from './components/CTHelix';
+import BubbleChamber from './components/BubbleChamber';
 
 export default function Home() {
   const [selectedFilter, setSelectedFilter] = useState('All');
@@ -93,41 +94,36 @@ export default function Home() {
 
       <main className="container">
         {/* Hero Section */}
-        <section id="home" className="hero-section">
-          <div className="hero-grid-wrapper">
-            <div className="hero-content">
-              <span className="hero-badge">Applied Physics</span>
-              <h1 className="hero-title">
-                Hi, I'm{' '}
-                <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
-                  <span className="hero-star hero-star-left">
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                    </svg>
-                  </span>
-                  Daniel Lee
-                  <span className="hero-star hero-star-right">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                    </svg>
-                  </span>
+        <section id="home" className="hero-section" style={{ position: 'relative' }}>
+          <BubbleChamber />
+          <div className="hero-content" style={{ textAlign: 'center', alignItems: 'center', margin: '0 auto' }}>
+            <span className="hero-badge">Applied Physics</span>
+            <h1 className="hero-title">
+              Hi, I'm{' '}
+              <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
+                <span className="hero-star hero-star-left">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
+                  </svg>
                 </span>
-              </h1>
-              <p className="hero-subtitle">
-                Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.
-              </p>
-              <div className="hero-cta">
-                <a href="#projects" className="btn-primary">
-                  <span className="btn-text" data-text="View My Projects">View My Projects</span> <ArrowUpRight size={18} />
-                </a>
-                <a href="#contact" className="btn-secondary">
-                  <span className="btn-text" data-text="Get in Touch">Get in Touch</span>
-                </a>
-              </div>
-            </div>
-            
-            <div className="hero-visual">
-              <CTHelix />
+                Daniel Lee
+                <span className="hero-star hero-star-right">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
+                  </svg>
+                </span>
+              </span>
+            </h1>
+            <p className="hero-subtitle">
+              Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.
+            </p>
+            <div className="hero-cta">
+              <a href="#projects" className="btn-primary">
+                <span className="btn-text" data-text="View My Projects">View My Projects</span> <ArrowUpRight size={18} />
+              </a>
+              <a href="#contact" className="btn-secondary">
+                <span className="btn-text" data-text="Get in Touch">Get in Touch</span>
+              </a>
             </div>
           </div>
         </section>
@@ -254,34 +250,40 @@ export default function Home() {
           </div>
 
           <div className="contact-grid">
-            <div className="contact-info">
-              <h3 className="contact-info-title">Contact Information</h3>
-              <p className="contact-info-desc">
-                Feel free to reach out via email, telephone, or LinkedIn. I am usually responsive and will get back to you within 24 hours.
-              </p>
-              
-              <div className="contact-details">
-                <div className="contact-detail-item">
-                  <div className="contact-detail-icon"><Mail size={20} /></div>
-                  <div className="contact-detail-content">
-                    <span className="contact-detail-label">Email</span>
-                    <span className="contact-detail-value">danieldoowonlee@gmail.com</span>
+            <div className="contact-info" style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
+              <div>
+                <h3 className="contact-info-title">Contact Information</h3>
+                <p className="contact-info-desc">
+                  Feel free to reach out via email, telephone, or LinkedIn. I am usually responsive and will get back to you within 24 hours.
+                </p>
+                
+                <div className="contact-details">
+                  <div className="contact-detail-item">
+                    <div className="contact-detail-icon"><Mail size={20} /></div>
+                    <div className="contact-detail-content">
+                      <span className="contact-detail-label">Email</span>
+                      <span className="contact-detail-value">danieldoowonlee@gmail.com</span>
+                    </div>
+                  </div>
+                  <div className="contact-detail-item">
+                    <div className="contact-detail-icon"><Phone size={20} /></div>
+                    <div className="contact-detail-content">
+                      <span className="contact-detail-label">Phone</span>
+                      <span className="contact-detail-value">240-550-3763</span>
+                    </div>
+                  </div>
+                  <div className="contact-detail-item">
+                    <div className="contact-detail-icon"><MapPin size={20} /></div>
+                    <div className="contact-detail-content">
+                      <span className="contact-detail-label">Location</span>
+                      <span className="contact-detail-value">Rockville, MD</span>
+                    </div>
                   </div>
                 </div>
-                <div className="contact-detail-item">
-                  <div className="contact-detail-icon"><Phone size={20} /></div>
-                  <div className="contact-detail-content">
-                    <span className="contact-detail-label">Phone</span>
-                    <span className="contact-detail-value">240-550-3763</span>
-                  </div>
-                </div>
-                <div className="contact-detail-item">
-                  <div className="contact-detail-icon"><MapPin size={20} /></div>
-                  <div className="contact-detail-content">
-                    <span className="contact-detail-label">Location</span>
-                    <span className="contact-detail-value">Rockville, MD</span>
-                  </div>
-                </div>
+              </div>
+
+              <div className="contact-helix-visual" style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <CTHelix horizontal={true} />
               </div>
             </div>
 

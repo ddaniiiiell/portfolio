@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-export default function CTHelix() {
+export default function CTHelix({ horizontal = false }) {
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
@@ -16,8 +16,8 @@ export default function CTHelix() {
   }, []);
 
   const rings = 8;
-  const height = 320;
-  const width = 200;
+  const height = horizontal ? 120 : 320;
+  const width = horizontal ? 360 : 200;
 
   // Generate helical paths
   const points = 60;
@@ -26,24 +26,28 @@ export default function CTHelix() {
 
   for (let i = 0; i <= points; i++) {
     const t = i / points;
-    const y = t * height;
     const angle = t * Math.PI * 6 + (offset * Math.PI) / 180; // 3 full turns
-    const x = Math.sin(angle) * (width / 2.5) + width / 2;
     
-    // Add 3D perspective depth by scaling x radius slightly and adding a depth effect
-    const z = Math.cos(angle);
+    let x, y;
+    if (horizontal) {
+      x = t * width;
+      y = Math.sin(angle) * (height / 2.8) + height / 2;
+    } else {
+      y = t * height;
+      x = Math.sin(angle) * (width / 2.5) + width / 2;
+    }
     
     if (i === 0) {
       helixPath1.push(`M ${x} ${y}`);
-      helixPath2.push(`M ${width - x} ${y}`);
+      helixPath2.push(`M ${horizontal ? x : width - x} ${horizontal ? height - y : y}`);
     } else {
       helixPath1.push(`L ${x} ${y}`);
-      helixPath2.push(`L ${width - x} ${y}`);
+      helixPath2.push(`L ${horizontal ? x : width - x} ${horizontal ? height - y : y}`);
     }
   }
 
-  // Scanning laser beam Y coordinate
-  const scanLineY = (Math.sin((offset * Math.PI) / 90) + 1) * (height / 2);
+  // Scanning laser beam coordinate
+  const scanLinePos = (Math.sin((offset * Math.PI) / 90) + 1) * ((horizontal ? width : height) / 2);
 
   return (
     <div 
@@ -52,21 +56,21 @@ export default function CTHelix() {
         position: 'relative',
         width: `${width}px`,
         height: `${height}px`,
-        opacity: 0.8,
+        opacity: 0.85,
         filter: 'drop-shadow(0 0 15px rgba(230, 228, 222, 0.1))',
       }}
     >
       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" xmlns="http://www.w3.org/2000/svg">
         {/* Scanner Gantry Rings (Back section of rings for depth) */}
         {Array.from({ length: rings }).map((_, idx) => {
-          const y = (idx / (rings - 1)) * height;
+          const pos = (idx / (rings - 1)) * (horizontal ? width : height);
           return (
             <ellipse 
               key={`ring-back-${idx}`}
-              cx={width / 2} 
-              cy={y} 
-              rx={width / 2.5} 
-              ry={12} 
+              cx={horizontal ? pos : width / 2} 
+              cy={horizontal ? height / 2 : pos} 
+              rx={horizontal ? 12 : width / 2.5} 
+              ry={horizontal ? height / 2.8 : 12} 
               stroke="var(--border-color)" 
               strokeWidth="1"
               strokeDasharray="4 4"
@@ -94,11 +98,19 @@ export default function CTHelix() {
 
         {/* Scanner Gantry Rings (Front section of rings) */}
         {Array.from({ length: rings }).map((_, idx) => {
-          const y = (idx / (rings - 1)) * height;
-          return (
+          const pos = (idx / (rings - 1)) * (horizontal ? width : height);
+          return horizontal ? (
             <path 
               key={`ring-front-${idx}`}
-              d={`M ${width / 2 - width / 2.5} ${y} A ${width / 2.5} 12 0 0 0 ${width / 2 + width / 2.5} ${y}`}
+              d={`M ${pos} ${height / 2 - height / 2.8} A 12 ${height / 2.8} 0 0 0 ${pos} ${height / 2 + height / 2.8}`}
+              stroke="var(--accent-secondary)" 
+              strokeWidth="1.5"
+              opacity="0.4"
+            />
+          ) : (
+            <path 
+              key={`ring-front-${idx}`}
+              d={`M ${width / 2 - width / 2.5} ${pos} A ${width / 2.5} 12 0 0 0 ${width / 2 + width / 2.5} ${pos}`}
               stroke="var(--accent-secondary)" 
               strokeWidth="1.5"
               opacity="0.4"
@@ -108,19 +120,22 @@ export default function CTHelix() {
 
         {/* CT Scanning Laser Plane Detector */}
         <line 
-          x1={0} 
-          y1={scanLineY} 
-          x2={width} 
-          y2={scanLineY} 
+          x1={horizontal ? scanLinePos : 0} 
+          y1={horizontal ? 0 : scanLinePos} 
+          x2={horizontal ? scanLinePos : width} 
+          y2={horizontal ? height : scanLinePos} 
           stroke="var(--accent-primary)" 
           strokeWidth="1.5"
           opacity="0.75"
         />
         
         {/* Glowing detector nodes */}
-        <circle cx={width / 2} cy={scanLineY} r={3} fill="var(--accent-primary)" />
-        <circle cx={width / 2 - width / 2.5} cy={scanLineY} r={2} fill="var(--accent-primary)" />
-        <circle cx={width / 2 + width / 2.5} cy={scanLineY} r={2} fill="var(--accent-primary)" />
+        <circle 
+          cx={horizontal ? scanLinePos : width / 2} 
+          cy={horizontal ? height / 2 : scanLinePos} 
+          r={3} 
+          fill="var(--accent-primary)" 
+        />
       </svg>
     </div>
   );

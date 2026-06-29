@@ -37,18 +37,17 @@ export default function GridPattern() {
     window.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseleave', onMouseLeave);
 
-    // Fixed index coordinates of grid intersections where we render stars
-    const starIntersections = [
-      { col: 3, row: 2, offset: 0 },
-      { col: 7, row: 1, offset: 1.5 },
-      { col: 11, row: 4, offset: 3 },
-      { col: 4, row: 6, offset: 0.8 },
-      { col: 9, row: 7, offset: 2.2 },
-      { col: 2, row: 4, offset: 4 },
-      { col: 13, row: 3, offset: 1.2 },
-      { col: 6, row: 9, offset: 2.8 },
-      { col: 10, row: 5, offset: 0.5 },
-    ];
+    // Generate randomized stars in the background for a more natural look
+    const numStars = 15;
+    const randomStars = [];
+    for (let i = 0; i < numStars; i++) {
+      randomStars.push({
+        xRatio: Math.random(),
+        yRatio: Math.random(),
+        offset: Math.random() * Math.PI * 2,
+        baseSize: 4 + Math.random() * 3, // star size radius between 4px and 7px
+      });
+    }
 
     const drawSparkle = (context, cx, cy, radius, opacity) => {
       context.save();
@@ -139,17 +138,30 @@ export default function GridPattern() {
         ctx.stroke();
       }
 
-      // Draw twinkling stars sitting exactly on warped grid intersections
-      starIntersections.forEach((star) => {
-        const c = star.col;
-        const r = star.row;
-        if (points[c] && points[c][r]) {
-          const pt = points[c][r];
-          const pulse = Math.sin(time * 2 + star.offset);
-          const opacity = 0.15 + (pulse + 1) * 0.35;
-          const starRadius = 5 + (pulse + 1) * 1.5;
-          drawSparkle(ctx, pt.x, pt.y, starRadius, opacity);
+      // Draw randomized stars that warp smoothly with the spacetime grid
+      randomStars.forEach((star) => {
+        const startX = star.xRatio * canvas.width;
+        const startY = star.yRatio * canvas.height;
+
+        let sx = startX;
+        let sy = startY;
+
+        if (mouse.active) {
+          const dx = smoothMouse.x - startX;
+          const dy = smoothMouse.y - startY;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < warpRadius) {
+            const force = Math.pow(1 - dist / warpRadius, 2) * maxWarp;
+            sx = startX + (dx / dist) * force;
+            sy = startY + (dy / dist) * force;
+          }
         }
+
+        const pulse = Math.sin(time * 2 + star.offset);
+        const opacity = 0.12 + (pulse + 1) * 0.28;
+        const starRadius = star.baseSize + (pulse + 1) * 1.2;
+        drawSparkle(ctx, sx, sy, starRadius, opacity);
       });
 
       animationFrameId = requestAnimationFrame(animate);
