@@ -118,7 +118,7 @@ export default function ContactForm() {
           </>
         ) : (
           <>
-            <Send size={18} /> Send Message
+            <Send size={18} /> <span className="btn-text" data-text="Send Message">Send Message</span>
           </>
         )}
       </button>

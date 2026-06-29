@@ -100,10 +100,10 @@ export default function Home() {
             </p>
             <div className="hero-cta">
               <a href="#projects" className="btn-primary">
-                View My Projects <ArrowUpRight size={18} />
+                <span className="btn-text" data-text="View My Projects">View My Projects</span> <ArrowUpRight size={18} />
               </a>
               <a href="#contact" className="btn-secondary">
-                Get in Touch
+                <span className="btn-text" data-text="Get in Touch">Get in Touch</span>
               </a>
             </div>
           </div>
