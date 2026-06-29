@@ -2,13 +2,13 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-// Generates a mathematically perfect circular logarithmic spiral path
+// Generates a mathematically perfect circular logarithmic spiral path shifted to the right (out of the way of text)
 const generateLogSpiralPath = () => {
-  const cx = 400; // Center X
-  const cy = 340; // Center Y
-  let path = "M 400,0 L 400,120 ";
+  const cx = 580; // Center X shifted to the right
+  const cy = 320; // Center Y
+  let path = "M 580,0 L 580,100 ";
   
-  const r0 = 220; // Starting radius at start of spiral (400, 120) relative to (400, 340)
+  const r0 = 200; // Starting radius at start of spiral relative to (580, 320)
   const k = 0.125; // Decay rate
   const startAngle = -Math.PI / 2; // Starts pointing straight up
   const points = 240;
@@ -32,39 +32,47 @@ const pathData = generateLogSpiralPath();
 
 export default function BubbleChamber() {
   const pathRef = useRef(null);
-  const [dotPos, setDotPos] = useState({ x: 400, y: 0, opacity: 0, size: 6.5 });
+  const [dotPos, setDotPos] = useState({ x: 580, y: 0, opacity: 0, size: 6.5 });
 
   useEffect(() => {
     const path = pathRef.current;
     if (!path) return;
 
     let animationId;
-    const duration = 4000; // 4 seconds to complete travel along path
+    const activeDuration = 4000; // 4 seconds of decay travel
+    const idleDuration = 2000; // 2 seconds of pause before regenerating
+    const totalDuration = activeDuration + idleDuration;
     let startTime = null;
 
     const animate = (timestamp) => {
       if (!startTime) startTime = timestamp;
       const elapsed = timestamp - startTime;
-      const progress = (elapsed % duration) / duration; // 0 to 1
+      const elapsedCycle = elapsed % totalDuration;
 
-      const totalLength = path.getTotalLength();
-      const currentLength = progress * totalLength;
-      
-      try {
-        const point = path.getPointAtLength(currentLength);
-        
-        // Slower decay scaling (retains size/brightness longer, then drops off near the core)
-        const size = 6.5 * Math.pow(1 - progress, 0.4); 
-        const opacity = Math.pow(1 - progress, 0.6);
+      if (elapsedCycle < activeDuration) {
+        const progress = elapsedCycle / activeDuration;
+        const totalLength = path.getTotalLength();
+        const currentLength = progress * totalLength;
 
-        setDotPos({
-          x: point.x,
-          y: point.y,
-          opacity: opacity,
-          size: Math.max(0.5, size),
-        });
-      } catch (e) {
-        // Fallback if browser doesn't support getPointAtLength cleanly on initial frame
+        try {
+          const point = path.getPointAtLength(currentLength);
+          
+          // Slower decay scaling (retains size/brightness longer, then drops off near the core)
+          const size = 6.5 * Math.pow(1 - progress, 0.4); 
+          const opacity = Math.pow(1 - progress, 0.6);
+
+          setDotPos({
+            x: point.x,
+            y: point.y,
+            opacity: opacity,
+            size: Math.max(0.5, size),
+          });
+        } catch (e) {
+          // Fallback
+        }
+      } else {
+        // Fade out completely during the idle period
+        setDotPos((prev) => ({ ...prev, opacity: 0 }));
       }
 
       animationId = requestAnimationFrame(animate);
@@ -86,7 +94,7 @@ export default function BubbleChamber() {
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: -1,
-        opacity: 1, // Opacity is controlled at the element level so the glow isn't dimmed by the container
+        opacity: 1,
       }}
     >
       <svg 
@@ -117,15 +125,6 @@ export default function BubbleChamber() {
           strokeWidth="1.2"
           strokeLinecap="round"
           opacity="0.18" // Very faint, subtle background track
-        />
-
-        {/* Dotted path details next to it for depth */}
-        <path 
-          d="M 405,0 L 405,110" 
-          stroke="currentColor" 
-          strokeWidth="0.8" 
-          strokeDasharray="4 8"
-          opacity="0.12"
         />
 
         {/* Glowing Decaying Particle Dot - Outer Halo (Soft/Wide Glow) */}
