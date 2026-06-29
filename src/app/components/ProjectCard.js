@@ -1,8 +1,8 @@
 'use client';
 
-import { Github, ExternalLink, Code } from 'lucide-react';
+import { ExternalLink, FileText } from 'lucide-react';
 
-export default function ProjectCard({ title, date, presentation, description, tags, githubLink, liveLink, imageUrl }) {
+export default function ProjectCard({ title, date, presentation, description, tags, liveLink, pdfLink, imageUrl }) {
   return (
     <div className="project-card">
       <div className="project-image-container">
@@ -81,7 +81,17 @@ export default function ProjectCard({ title, date, presentation, description, ta
               rel="noopener noreferrer" 
               className="project-link"
             >
-              <ExternalLink size={16} /> Read
+              <ExternalLink size={16} /> Official Paper
+            </a>
+          )}
+          {pdfLink && (
+            <a
+              href={pdfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
+              <FileText size={16} /> PDF
             </a>
           )}
         </div>

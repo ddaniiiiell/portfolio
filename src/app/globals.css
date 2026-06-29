@@ -928,6 +928,25 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.25rem;
 }
 
+.hobby-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  margin-top: 0.5rem;
+  color: var(--accent-primary);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.hobby-link:hover {
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
 .github-loading {
   display: flex;
   flex-direction: column;
@@ -1215,7 +1234,6 @@ h1, h2, h3, h4, h5, h6 {
   right: -0.55em;
   animation-delay: 2s;
 }
-
 
 
 

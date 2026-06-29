@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, Star, GitFork, ArrowUpRight, Award, Server } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone, MapPin, ArrowUpRight, Youtube } from 'lucide-react';
 import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
-import ContactForm from './components/ContactForm';
 import CTHelix from './components/CTHelix';
 import BubbleChamber from './components/BubbleChamber';
 
@@ -40,6 +39,7 @@ export default function Home() {
       category: 'Research',
       githubLink: 'https://github.com/ddaniiiiell',
       liveLink: 'https://doi.org/10.1016/j.radphyschem.2024.111773',
+      pdfLink: '/papers/ct-scan-radiation-exposure.pdf',
       imageUrl: '/images/ct_scan_abstract.jpg',
     },
     {
@@ -50,6 +50,7 @@ export default function Home() {
       category: 'Computational Modeling',
       githubLink: 'https://github.com/ddaniiiiell',
       liveLink: 'https://doi.org/10.1016/j.net.2025.103603',
+      pdfLink: '/papers/monkey-anatomical-posture-modeler.pdf',
       imageUrl: '/images/posture_modeler_abstract.jpg',
     },
     {
@@ -61,6 +62,7 @@ export default function Home() {
       category: 'Computational Modeling',
       githubLink: 'https://github.com/ddaniiiiell',
       liveLink: 'https://doi.org/10.1016/j.radphyschem.2025.112549',
+      pdfLink: '/papers/internal-radiation-source-solver.pdf',
       imageUrl: '/images/internal_source_abstract.jpg',
     },
   ];
@@ -223,6 +225,15 @@ export default function Home() {
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Music & Vocal Performance</h3>
                 <p className="github-repo-desc">A deep passion for music, performing classical vocal arts, singing in ensembles, and exploring new musical styles.</p>
+                <a
+                  href="https://www.youtube.com/@ddaniiiiell"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hobby-link"
+                  aria-label="Open Daniel Lee's YouTube channel"
+                >
+                  <Youtube size={16} /> YouTube Channel
+                </a>
               </div>
             </div>
           </div>
