@@ -1,8 +1,55 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function BubbleChamber() {
+  const pathRef = useRef(null);
+  const [dotPos, setDotPos] = useState({ x: 400, y: 0, opacity: 0, size: 6 });
+
+  useEffect(() => {
+    const path = pathRef.current;
+    if (!path) return;
+
+    let animationId;
+    const duration = 4000; // 4 seconds to complete travel along path
+    let startTime = null;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = (elapsed % duration) / duration; // 0 to 1
+
+      const totalLength = path.getTotalLength();
+      const currentLength = progress * totalLength;
+      
+      try {
+        const point = path.getPointAtLength(currentLength);
+        
+        // Calculate decay scaling
+        // As the particle goes down the path (progress: 0 to 1), it shrinks and fades
+        const size = 6.5 * (1 - progress); 
+        const opacity = 1 - progress;
+
+        setDotPos({
+          x: point.x,
+          y: point.y,
+          opacity: opacity,
+          size: Math.max(0.5, size),
+        });
+      } catch (e) {
+        // Fallback if browser doesn't support getPointAtLength cleanly on initial frame
+      }
+
+      animationId = requestAnimationFrame(animate);
+    };
+
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  // Standard vertical entry that curls into a decay spiral
+  const pathData = "M 400,0 L 400,200 C 400,240 375,270 340,270 C 300,270 290,230 315,205 C 340,180 370,210 365,240 C 360,270 325,285 305,265 C 285,245 295,220 310,220 C 325,220 330,235 325,245 C 320,255 310,250 310,240";
+
   return (
     <div 
       className="bubble-chamber-container"
@@ -15,7 +62,7 @@ export default function BubbleChamber() {
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: -1,
-        opacity: 0.18,
+        opacity: 0.22,
       }}
     >
       <svg 
@@ -27,56 +74,47 @@ export default function BubbleChamber() {
         xmlns="http://www.w3.org/2000/svg"
         style={{ color: 'var(--accent-primary)' }}
       >
-        {/* Track 1: Particle Pair Production (Classic V-split decay spirals) */}
+        {/* Glow Filter for the decaying particle */}
+        <defs>
+          <filter id="glow-particle" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Central Decay Spiral Line */}
         <path 
-          className="chamber-track track-pair-incoming"
-          d="M 400 0 L 400 200" 
+          ref={pathRef}
+          d={pathData} 
           stroke="currentColor" 
           strokeWidth="1.2"
-          strokeDasharray="4 4"
-        />
-        
-        {/* Positive particle spiral (curling left) */}
-        <path 
-          className="chamber-track track-spiral-left"
-          d="M 400 200 C 400 240, 360 280, 320 280 C 270 280, 260 230, 280 200 C 300 170, 330 190, 330 210 C 330 230, 310 240, 300 230 C 290 220, 295 205, 310 205" 
-          stroke="currentColor" 
-          strokeWidth="1" 
           strokeLinecap="round"
+          opacity="0.35"
         />
 
-        {/* Negative particle spiral (curling right) */}
+        {/* Dotted path details next to it for depth */}
         <path 
-          className="chamber-track track-spiral-right"
-          d="M 400 200 C 400 240, 440 280, 480 280 C 530 280, 540 230, 520 200 C 500 170, 470 190, 470 210 C 470 230, 490 240, 500 230 C 510 220, 505 205, 490 205" 
+          d="M 405,0 L 405,190" 
           stroke="currentColor" 
-          strokeWidth="1" 
-          strokeLinecap="round"
+          strokeWidth="0.8" 
+          strokeDasharray="4 8"
+          opacity="0.25"
         />
 
-        {/* Track 2: High energy particle knock-on electron track (delta ray) */}
-        <path 
-          className="chamber-track track-delta"
-          d="M 150 0 C 180 150, 220 300, 280 480" 
-          stroke="currentColor" 
-          strokeWidth="1.5" 
-          opacity="0.7"
-        />
-        {/* Branching electron spiral */}
-        <path 
-          className="chamber-track track-delta-spiral"
-          d="M 200 220 C 190 250, 160 260, 140 240 C 120 220, 130 180, 160 180 C 180 180, 190 200, 180 215 C 170 225, 160 220, 160 210" 
-          stroke="currentColor" 
-          strokeWidth="0.8"
-        />
-
-        {/* Track 3: Slow decaying curved particle */}
-        <path 
-          className="chamber-track track-slow-curve"
-          d="M 650 50 C 600 200, 500 350, 320 450" 
-          stroke="currentColor" 
-          strokeWidth="1" 
-          strokeDasharray="8 2"
+        {/* Glowing Decaying Particle Dot */}
+        <circle 
+          cx={dotPos.x} 
+          cy={dotPos.y} 
+          r={dotPos.size} 
+          fill="currentColor" 
+          filter="url(#glow-particle)"
+          style={{
+            opacity: dotPos.opacity,
+            transition: 'opacity 0.05s ease',
+          }}
         />
       </svg>
     </div>

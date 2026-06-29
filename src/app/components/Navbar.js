@@ -38,6 +38,7 @@ export default function Navbar() {
     { name: 'Home', href: '#home' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
+    { name: 'Beyond Physics', href: '#hobbies' },
     { name: 'Contact', href: '#contact' },
   ];
 

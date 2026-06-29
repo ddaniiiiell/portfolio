@@ -37,15 +37,16 @@ export default function GridPattern() {
     window.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseleave', onMouseLeave);
 
-    // Generate randomized stars in the background for a more natural look
-    const numStars = 15;
-    const randomStars = [];
-    for (let i = 0; i < numStars; i++) {
-      randomStars.push({
+    // Initialize a dynamic array of stars
+    let activeStars = [];
+    // Populate initial stars so the screen is decorated immediately on launch
+    for (let i = 0; i < 8; i++) {
+      activeStars.push({
         xRatio: Math.random(),
         yRatio: Math.random(),
-        offset: Math.random() * Math.PI * 2,
-        baseSize: 4 + Math.random() * 3, // star size radius between 4px and 7px
+        maxLife: 200 + Math.random() * 150,
+        life: Math.random() * 150, // start at randomized lifecycle points
+        baseSize: 3 + Math.random() * 4,
       });
     }
 
@@ -138,8 +139,21 @@ export default function GridPattern() {
         ctx.stroke();
       }
 
-      // Draw randomized stars that warp smoothly with the spacetime grid
-      randomStars.forEach((star) => {
+      // Spawn new stars actively to keep the ambient field alive
+      if (activeStars.length < 15 && Math.random() < 0.015) {
+        activeStars.push({
+          xRatio: Math.random(),
+          yRatio: Math.random(),
+          maxLife: 250 + Math.random() * 150,
+          life: 0,
+          baseSize: 3 + Math.random() * 4,
+        });
+      }
+
+      // Draw active stars that warp smoothly with the spacetime grid
+      activeStars.forEach((star) => {
+        star.life++;
+        
         const startX = star.xRatio * canvas.width;
         const startY = star.yRatio * canvas.height;
 
@@ -158,11 +172,23 @@ export default function GridPattern() {
           }
         }
 
-        const pulse = Math.sin(time * 2 + star.offset);
-        const opacity = 0.12 + (pulse + 1) * 0.28;
-        const starRadius = star.baseSize + (pulse + 1) * 1.2;
+        // Calculate opacity based on lifecycle (fade in first 15%, fade out last 15%)
+        const ratio = star.life / star.maxLife;
+        let alpha = 1;
+        if (ratio < 0.15) {
+          alpha = ratio / 0.15;
+        } else if (ratio > 0.85) {
+          alpha = (1 - ratio) / 0.15;
+        }
+
+        const pulse = Math.sin(time * 2 + star.life * 0.05);
+        const opacity = alpha * (0.12 + (pulse + 1) * 0.28);
+        const starRadius = star.baseSize + (pulse + 1) * 1.0;
         drawSparkle(ctx, sx, sy, starRadius, opacity);
       });
+
+      // Filter out dead stars
+      activeStars = activeStars.filter((star) => star.life < star.maxLife);
 
       animationFrameId = requestAnimationFrame(animate);
     };

@@ -102,13 +102,13 @@ export default function Home() {
               Hi, I'm{' '}
               <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
                 <span className="hero-star hero-star-left">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
                   </svg>
                 </span>
                 Daniel Lee
                 <span className="hero-star hero-star-right">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
                   </svg>
                 </span>
@@ -253,8 +253,8 @@ export default function Home() {
             <div className="contact-info" style={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
               <div>
                 <h3 className="contact-info-title">Contact Information</h3>
-                <p className="contact-info-desc">
-                  Feel free to reach out via email, telephone, or LinkedIn. I am usually responsive and will get back to you within 24 hours.
+                <p className="contact-info-desc" style={{ marginBottom: '2rem' }}>
+                  Feel free to reach out via email or text.
                 </p>
                 
                 <div className="contact-details">

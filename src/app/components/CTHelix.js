@@ -8,7 +8,7 @@ export default function CTHelix({ horizontal = false }) {
   useEffect(() => {
     let animationId;
     const animate = () => {
-      setOffset((prev) => (prev + 1.2) % 360);
+      setOffset((prev) => (prev + 0.35) % 360);
       animationId = requestAnimationFrame(animate);
     };
     animate();
