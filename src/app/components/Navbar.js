@@ -44,8 +44,12 @@ export default function Navbar() {
   return (
     <nav className={`navbar-container ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-wrapper">
-        <a href="#home" className="navbar-logo">
-          DL<span>.</span>
+        <a href="#home" className="navbar-logo" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ color: 'var(--accent-primary)' }}>
+            <path d="M6 4v16h6c3.314 0 6-2.686 6-6s-2.686-6-6-6H6z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M6 20h10" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span style={{ fontSize: '1.1rem', fontWeight: '700', letterSpacing: '-0.02em', fontFamily: 'var(--font-display)' }}>Daniel Lee</span>
         </a>
 
         {/* Desktop Navigation */}

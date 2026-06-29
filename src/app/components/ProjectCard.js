@@ -2,14 +2,20 @@
 
 import { Github, ExternalLink, Code } from 'lucide-react';
 
-export default function ProjectCard({ title, description, tags, githubLink, liveLink }) {
+export default function ProjectCard({ title, description, tags, githubLink, liveLink, imageUrl }) {
   return (
     <div className="project-card">
       <div className="project-image-container">
-        <div className="project-image-fallback">
-          <div className="project-image-fallback-pattern" />
-          <Code className="project-image-icon" size={48} />
-        </div>
+        {imageUrl ? (
+          <img src={imageUrl} alt={title} className="project-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        ) : (
+          <div className="project-image-fallback">
+            <div className="project-image-fallback-pattern" />
+            <div className="project-image-placeholder-text" style={{ fontFamily: 'var(--font-display)', fontSize: '0.85rem', fontWeight: '600', color: 'var(--text-secondary)', zIndex: '2' }}>
+              [Project Image Placeholder]
+            </div>
+          </div>
+        )}
       </div>
       <div className="project-content">
         <h3 className="project-title">{title}</h3>

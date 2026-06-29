@@ -37,6 +37,7 @@ export default function Home() {
       category: 'Research',
       githubLink: 'https://github.com/ddaniiiiell',
       liveLink: 'https://doi.org/10.1016/j.radphyschem.2024.111773',
+      imageUrl: '/images/ct_scan_abstract.jpg',
     },
     {
       title: 'Monkey Anatomical Posture Modeler',
@@ -45,6 +46,7 @@ export default function Home() {
       category: 'Computational Modeling',
       githubLink: 'https://github.com/ddaniiiiell',
       liveLink: 'https://doi.org/10.1016/j.net.2025.103603',
+      imageUrl: '/images/posture_modeler_abstract.jpg',
     },
     {
       title: 'Internal Radiation Source Solver',
@@ -53,27 +55,28 @@ export default function Home() {
       category: 'Computational Modeling',
       githubLink: 'https://github.com/ddaniiiiell',
       liveLink: 'https://doi.org/10.1016/j.radphyschem.2025.112549',
+      imageUrl: '/images/internal_source_abstract.jpg',
     },
   ];
 
   const experience = [
     {
-      role: 'Academic Research Intern',
+      role: 'Academic Intern',
       company: 'Inova Fairfax Hospital',
-      date: '2026 - Present',
-      description: 'Collaborating on medical imaging analyses and clinical research workflows under the mentorship of Dr. In H. Yeo.',
+      date: 'Jun 2026 - Present',
+      description: 'Working in the Department of Radiation Oncology under Dr. In H. Yeo and the medical physics team. Analyzing and extracting numerical data for Dr. Yeo’s research abstract alongside other physicians, gaining hands-on exposure to the full treatment workflow in radiation therapy. Shadowed medical physicists, radiation oncologists, and engineers during proton, CyberKnife, and Ethos adaptive radiotherapy treatments. Assisted with patient-specific quality assurance (PSQA) on proton machines.',
     },
     {
-      role: 'Biomedical Research Intern',
+      role: 'Research Intern',
       company: 'East Carolina University',
-      date: '2023 - 2024',
-      description: 'Conducted dose estimation modeling for COVID-19 computed tomography scans and voxel monkey anatomy models under the mentorship of Dr. Jaewon Jung. Co-authored three publications in peer-reviewed scientific journals.',
+      date: '2024 - 2024',
+      description: 'Assisted Dr. Jaewon Jung with Monte Carlo–based radiation dose calculations in computational non-human primate models, focusing on how posture and source distribution affect organ doses. Prepared figures, tables, and text for manuscripts on monkey organ doses from external photons and S-values for internal emitters, co-authoring publications in Nuclear Engineering and Technology and Radiation Physics and Chemistry.',
     },
     {
-      role: 'Robotics Program Scholar',
-      company: 'GEMS (U.S. Army sponsored)',
-      date: '2023',
-      description: 'Participated in the Gains in the Education of Mathematics and Science robotics program developing logic controls.',
+      role: 'Research Intern',
+      company: 'East Carolina University',
+      date: '2023 - 2023',
+      description: 'Contributed to research on patient dose from CT imaging for COVID-19 diagnosis, including data organization, basic dose calculations, and literature review on CT protocols and radiation risk. Co-authored a publication in Radiation Physics and Chemistry.',
     },
   ];
 
@@ -93,7 +96,7 @@ export default function Home() {
           <div className="hero-content">
             <span className="hero-badge">Applied Physics</span>
             <h1 className="hero-title">
-              Hi, I'm <span>Daniel D. Lee</span>
+              Hi, I'm <span>Daniel Lee</span>
             </h1>
             <p className="hero-subtitle">
               Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.
@@ -161,54 +164,46 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Live GitHub Stats Dashboard */}
-        <section id="github" className="section">
+        {/* Hobbies Section */}
+        <section id="hobbies" className="section">
           <div className="section-header">
-            <h2 className="section-title">Live <span>GitHub Activity</span></h2>
+            <h2 className="section-title">Beyond <span>Physics</span></h2>
             <p className="section-subtitle">
-              Real-time feed showing active repositories, language statistics, and code contributions.
+              Some of the creative outlets, hobbies, and musical arts I pursue in my free time.
             </p>
           </div>
 
-          {githubLoading ? (
-            <div className="github-loading">
-              <div className="form-submit-btn" style={{ background: 'transparent', boxShadow: 'none' }}>
-                <Server size={24} className="animate-spin" style={{ color: 'var(--accent-primary)' }} />
+          <div className="github-grid">
+            <div className="github-card glass-card" style={{ padding: '0', overflow: 'hidden' }}>
+              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Hobby Image: Photography]</span>
               </div>
-              <p>Fetching data from the GitHub API...</p>
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Photography</h3>
+                <p className="github-repo-desc">Capturing visual frames, playing with lighting, natural shadows, and urban architectures through the lens of a camera.</p>
+              </div>
             </div>
-          ) : (
-            <div className="github-grid">
-              {githubData?.repos?.map((repo, idx) => (
-                <div key={idx} className="github-card glass-card">
-                  <div className="github-card-header">
-                    <span className="github-repo-name">{repo.name}</span>
-                    <Award size={18} style={{ color: 'var(--accent-secondary)' }} />
-                  </div>
-                  <p className="github-repo-desc">{repo.description || 'No description available for this repository.'}</p>
-                  <div className="github-repo-meta">
-                    {repo.language && (
-                      <span className="github-repo-stat">
-                        <span style={{ 
-                          width: 8, 
-                          height: 8, 
-                          borderRadius: '50%', 
-                          background: 'var(--accent-primary)',
-                          display: 'inline-block' 
-                        }}></span> {repo.language}
-                      </span>
-                    )}
-                    <span className="github-repo-stat">
-                      <Star size={14} /> {repo.stargazers_count}
-                    </span>
-                    <span className="github-repo-stat">
-                      <GitFork size={14} /> {repo.forks_count}
-                    </span>
-                  </div>
-                </div>
-              ))}
+
+            <div className="github-card glass-card" style={{ padding: '0', overflow: 'hidden' }}>
+              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Hobby Image: Cello]</span>
+              </div>
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Playing Cello</h3>
+                <p className="github-repo-desc">Exploring strings, playing classical compositions, and practicing the deep, resonant harmonies of the cello.</p>
+              </div>
             </div>
-          )}
+
+            <div className="github-card glass-card" style={{ padding: '0', overflow: 'hidden' }}>
+              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Hobby Image: Singing & Music]</span>
+              </div>
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Music & Vocal Performance</h3>
+                <p className="github-repo-desc">A deep passion for music, performing classical vocal arts, singing in ensembles, and exploring new musical styles.</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Contact Section */}
@@ -226,6 +221,9 @@ export default function Home() {
               <p className="contact-info-desc">
                 Feel free to reach out via the form, email, or telephone. I am usually responsive and will get back to you within 24 hours.
               </p>
+              <div className="contact-image-placeholder glass-card" style={{ height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', margin: '1rem 0' }}>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Connect Section Image Placeholder]</span>
+              </div>
               
               <div className="contact-details">
                 <div className="contact-detail-item">
@@ -262,7 +260,7 @@ export default function Home() {
       <footer className="footer-section">
         <div className="container footer-wrapper">
           <p className="footer-text">
-            © {new Date().getFullYear()} Daniel D. Lee. All rights reserved.
+            © {new Date().getFullYear()} Daniel Lee. All rights reserved.
           </p>
           <div className="footer-socials">
             <a href="https://github.com/ddaniiiiell" target="_blank" rel="noopener noreferrer" className="footer-social-link" aria-label="GitHub">
