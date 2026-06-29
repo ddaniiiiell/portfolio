@@ -175,8 +175,14 @@ export default function Home() {
 
           <div className="github-grid">
             <div className="github-card glass-card" style={{ padding: '0', overflow: 'hidden' }}>
-              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Hobby Image: Photography]</span>
+              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', position: 'relative' }}>
+                <img 
+                  src="/images/hobby_photography.jpg" 
+                  alt="Photography" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Hobby Image: Photography]</span>
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Photography</h3>
@@ -185,8 +191,14 @@ export default function Home() {
             </div>
 
             <div className="github-card glass-card" style={{ padding: '0', overflow: 'hidden' }}>
-              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Hobby Image: Cello]</span>
+              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', position: 'relative' }}>
+                <img 
+                  src="/images/hobby_cello.jpg" 
+                  alt="Playing Cello" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Hobby Image: Cello]</span>
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Playing Cello</h3>
@@ -195,8 +207,14 @@ export default function Home() {
             </div>
 
             <div className="github-card glass-card" style={{ padding: '0', overflow: 'hidden' }}>
-              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Hobby Image: Singing & Music]</span>
+              <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', position: 'relative' }}>
+                <img 
+                  src="/images/hobby_music.jpg" 
+                  alt="Music & Vocal Performance" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Hobby Image: Singing & Music]</span>
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Music & Vocal Performance</h3>
@@ -219,11 +237,8 @@ export default function Home() {
             <div className="contact-info">
               <h3 className="contact-info-title">Contact Information</h3>
               <p className="contact-info-desc">
-                Feel free to reach out via the form, email, or telephone. I am usually responsive and will get back to you within 24 hours.
+                Feel free to reach out via email, telephone, or LinkedIn. I am usually responsive and will get back to you within 24 hours.
               </p>
-              <div className="contact-image-placeholder glass-card" style={{ height: '220px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', margin: '1rem 0' }}>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600' }}>[Connect Section Image Placeholder]</span>
-              </div>
               
               <div className="contact-details">
                 <div className="contact-detail-item">
@@ -250,8 +265,14 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="contact-form-container glass-card" style={{ padding: '2rem' }}>
-              <ContactForm />
+            <div className="contact-image-container glass-card" style={{ overflow: 'hidden', minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', border: '1px solid var(--border-color)', position: 'relative' }}>
+              <img 
+                src="/images/connect_picture.jpg" 
+                alt="Connect" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+                onError={(e) => { e.target.style.display = 'none'; }}
+              />
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Connect Image Placeholder]</span>
             </div>
           </div>
         </section>
