@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Phone, MapPin, ArrowUpRight, Youtube } from 'lucide-react';
+import { Camera, Github, Linkedin, Mail, Phone, MapPin, ArrowUpRight, Youtube } from 'lucide-react';
 import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
 import CTHelix from './components/CTHelix';
@@ -10,6 +10,7 @@ import BubbleChamber from './components/BubbleChamber';
 export default function Home() {
   const [githubData, setGithubData] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
+  const [showPhotographyGallery, setShowPhotographyGallery] = useState(false);
 
   // Fetch GitHub repos dynamically
   useEffect(() => {
@@ -87,6 +88,13 @@ export default function Home() {
       company: 'East Carolina University',
       date: '2023 - 2023',
       description: 'Contributed to research on patient dose from CT imaging for COVID-19 diagnosis, including data organization, basic dose calculations, and literature review on CT protocols and radiation risk. Co-authored a publication in Radiation Physics and Chemistry.',
+    },
+  ];
+
+  const photographyGallery = [
+    {
+      src: '/images/hobby_photography.jpg',
+      alt: 'Photography sample',
     },
   ];
 
@@ -194,6 +202,15 @@ export default function Home() {
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Photography</h3>
                 <p className="github-repo-desc">Capturing visual frames, playing with lighting, natural shadows, and urban architectures through the lens of a camera.</p>
+                <button
+                  type="button"
+                  className="hobby-link hobby-button"
+                  aria-expanded={showPhotographyGallery}
+                  aria-controls="photography-gallery"
+                  onClick={() => setShowPhotographyGallery((isOpen) => !isOpen)}
+                >
+                  <Camera size={16} /> {showPhotographyGallery ? 'Hide Photos' : 'View More'}
+                </button>
               </div>
             </div>
 
@@ -236,6 +253,16 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+          {showPhotographyGallery && (
+            <div id="photography-gallery" className="photography-gallery" aria-label="Photography gallery">
+              {photographyGallery.map((photo) => (
+                <figure key={photo.src} className="photography-gallery-item">
+                  <img src={photo.src} alt={photo.alt} />
+                </figure>
+              ))}
+            </div>
+          )}
         </section>
 
         {/* Contact Section */}
@@ -292,7 +319,6 @@ export default function Home() {
                 style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
                 onError={(e) => { e.target.style.display = 'none'; }}
               />
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Connect Image Placeholder]</span>
             </div>
           </div>
         </section>
