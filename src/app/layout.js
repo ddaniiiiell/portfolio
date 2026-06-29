@@ -1,4 +1,5 @@
 import './globals.css';
+import GridPattern from '@/components/GridPattern';
 
 export const metadata = {
   title: 'Daniel Lee | Interactive Portfolio & Developer Showcase',
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <div className="grain-overlay" />
+        <GridPattern />
         <div className="glow-bg">
           <div className="glow-circle glow-1 animate-glow" style={{ animationDelay: '0s' }}></div>
           <div className="glow-circle glow-2 animate-glow" style={{ animationDelay: '2s' }}></div>
