@@ -1,5 +1,5 @@
 import './globals.css';
-import GridPattern from '@/components/GridPattern';
+import GridPattern from './components/GridPattern';
 
 export const metadata = {
   title: 'Daniel Lee | Interactive Portfolio & Developer Showcase',
