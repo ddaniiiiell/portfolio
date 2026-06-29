@@ -9,7 +9,6 @@ import CTHelix from './components/CTHelix';
 import BubbleChamber from './components/BubbleChamber';
 
 export default function Home() {
-  const [selectedFilter, setSelectedFilter] = useState('All');
   const [githubData, setGithubData] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
 
@@ -82,11 +81,7 @@ export default function Home() {
     },
   ];
 
-  const filterCategories = ['All', 'Research', 'Computational Modeling'];
-
-  const filteredProjects = selectedFilter === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === selectedFilter);
+  // Render all projects directly without filter tags
 
   return (
     <>
@@ -131,26 +126,14 @@ export default function Home() {
         {/* Projects Section */}
         <section id="projects" className="section">
           <div className="section-header">
-            <h2 className="section-title">Featured <span>Projects</span></h2>
+            <h2 className="section-title">Research <span>Abstracts</span></h2>
             <p className="section-subtitle">
-              A curated collection of digital interfaces and full-stack solutions.
+              Selected research abstracts, mathematical models, and simulated publications in computational radiation physics and dosimetry.
             </p>
           </div>
 
-          <div className="filter-buttons">
-            {filterCategories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedFilter(cat)}
-                className={`filter-btn ${selectedFilter === cat ? 'active' : ''}`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
           <div className="projects-grid">
-            {filteredProjects.map((project, idx) => (
+            {projects.map((project, idx) => (
               <ProjectCard key={idx} {...project} />
             ))}
           </div>

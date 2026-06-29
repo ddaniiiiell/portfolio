@@ -48,7 +48,7 @@ export default function BubbleChamber() {
   }, []);
 
   // Standard vertical entry that curls into a decay spiral
-  const pathData = "M 400,0 L 400,200 C 400,240 375,270 340,270 C 300,270 290,230 315,205 C 340,180 370,210 365,240 C 360,270 325,285 305,265 C 285,245 295,220 310,220 C 325,220 330,235 325,245 C 320,255 310,250 310,240";
+  const pathData = "M 400,0 L 400,150 C 400,220 620,220 620,340 C 620,460 180,460 180,340 C 180,240 550,240 550,340 C 550,410 260,410 260,340 C 260,290 480,290 480,340 C 480,380 320,380 320,340 C 320,310 420,310 420,340";
 
   return (
     <div 
@@ -97,7 +97,7 @@ export default function BubbleChamber() {
 
         {/* Dotted path details next to it for depth */}
         <path 
-          d="M 405,0 L 405,190" 
+          d="M 405,0 L 405,140" 
           stroke="currentColor" 
           strokeWidth="0.8" 
           strokeDasharray="4 8"

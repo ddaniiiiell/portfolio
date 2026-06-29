@@ -1206,13 +1206,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-star-left {
-  top: -0.7em;
-  left: -1.0em;
+  top: -0.3em;
+  left: -0.5em;
 }
 
 .hero-star-right {
-  bottom: -0.35em;
-  right: -0.9em;
+  top: 0.15em;
+  right: -0.55em;
   animation-delay: 2s;
 }
 
