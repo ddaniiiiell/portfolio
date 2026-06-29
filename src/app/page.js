@@ -91,7 +91,7 @@ export default function Home() {
         {/* Hero Section */}
         <section id="home" className="hero-section">
           <div className="hero-content">
-            <span className="hero-badge">Applied Physics & Bioengineering</span>
+            <span className="hero-badge">Applied Physics</span>
             <h1 className="hero-title">
               Hi, I'm <span>Daniel D. Lee</span>
             </h1>

@@ -22,16 +22,6 @@ export default function ProjectCard({ title, description, tags, githubLink, live
           ))}
         </div>
         <div className="project-links">
-          {githubLink && (
-            <a 
-              href={githubLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="project-link"
-            >
-              <Github size={16} /> Code
-            </a>
-          )}
           {liveLink && (
             <a 
               href={liveLink} 
@@ -39,7 +29,7 @@ export default function ProjectCard({ title, description, tags, githubLink, live
               rel="noopener noreferrer" 
               className="project-link"
             >
-              <ExternalLink size={16} /> Live Demo
+              <ExternalLink size={16} /> Read
             </a>
           )}
         </div>
