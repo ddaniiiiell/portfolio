@@ -52,6 +52,7 @@ export default function Home() {
       liveLink: 'https://doi.org/10.1016/j.net.2025.103603',
       pdfLink: '/papers/monkey-anatomical-posture-modeler.pdf',
       imageUrl: '/images/posture_modeler_abstract.jpg',
+      imagePosition: 'center 58%',
     },
     {
       title: 'Internal Radiation Source Solver',
@@ -64,6 +65,7 @@ export default function Home() {
       liveLink: 'https://doi.org/10.1016/j.radphyschem.2025.112549',
       pdfLink: '/papers/internal-radiation-source-solver.pdf',
       imageUrl: '/images/internal_source_abstract.jpg',
+      imagePosition: 'center 72%',
     },
   ];
 
@@ -188,7 +190,6 @@ export default function Home() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Hobby Image: Photography]</span>
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Photography</h3>
@@ -204,7 +205,6 @@ export default function Home() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Hobby Image: Cello]</span>
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Playing Cello</h3>
@@ -220,7 +220,6 @@ export default function Home() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', fontWeight: '600', zIndex: 1 }}>[Hobby Image: Singing & Music]</span>
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Music & Vocal Performance</h3>

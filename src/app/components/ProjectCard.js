@@ -2,12 +2,17 @@
 
 import { ExternalLink, FileText } from 'lucide-react';
 
-export default function ProjectCard({ title, date, presentation, description, tags, liveLink, pdfLink, imageUrl }) {
+export default function ProjectCard({ title, date, presentation, description, tags, liveLink, pdfLink, imageUrl, imagePosition = 'center' }) {
   return (
     <div className="project-card">
       <div className="project-image-container">
         {imageUrl ? (
-          <img src={imageUrl} alt={title} className="project-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img
+            src={imageUrl}
+            alt={title}
+            className="project-image"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: imagePosition }}
+          />
         ) : (
           <div className="project-image-fallback">
             <div className="project-image-fallback-pattern" />
