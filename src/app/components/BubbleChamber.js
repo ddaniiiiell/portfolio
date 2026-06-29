@@ -7,22 +7,22 @@ const generateLogSpiralPath = () => {
   const cx = 580; // Center X shifted to the right
   const cy = 320; // Center Y
   let path = "M 580,0 L 580,100 ";
-  
+
   const r0 = 200; // Starting radius at start of spiral relative to (580, 320)
   const k = 0.125; // Decay rate
   const startAngle = -Math.PI / 2; // Starts pointing straight up
   const points = 240;
   const maxTheta = Math.PI * 6.5; // 3.25 full circular loops
-  
+
   for (let i = 0; i <= points; i++) {
     const t = i / points;
     const theta = t * maxTheta;
     const angle = startAngle + theta; // Clockwise spiral
     const r = r0 * Math.exp(-k * theta);
-    
+
     const x = cx + r * Math.cos(angle);
     const y = cy + r * Math.sin(angle);
-    
+
     path += `L ${x.toFixed(1)} ${y.toFixed(1)} `;
   }
   return path;
@@ -56,9 +56,9 @@ export default function BubbleChamber() {
 
         try {
           const point = path.getPointAtLength(currentLength);
-          
+
           // Slower decay scaling (retains size/brightness longer, then drops off near the core)
-          const size = 6.5 * Math.pow(1 - progress, 0.4); 
+          const size = 6.5 * Math.pow(1 - progress, 0.4);
           const opacity = Math.pow(1 - progress, 0.6);
 
           setDotPos({
@@ -83,7 +83,7 @@ export default function BubbleChamber() {
   }, []);
 
   return (
-    <div 
+    <div
       className="bubble-chamber-container"
       style={{
         position: 'absolute',
@@ -97,12 +97,12 @@ export default function BubbleChamber() {
         opacity: 1,
       }}
     >
-      <svg 
-        width="100%" 
-        height="100%" 
-        viewBox="0 0 800 600" 
-        preserveAspectRatio="xMidYMid slice" 
-        fill="none" 
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 800 600"
+        preserveAspectRatio="xMidYMid slice"
+        fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{ color: 'var(--accent-primary)' }}
       >
@@ -118,21 +118,21 @@ export default function BubbleChamber() {
         </defs>
 
         {/* Central Decay Spiral Line */}
-        <path 
+        <path
           ref={pathRef}
-          d={pathData} 
-          stroke="currentColor" 
+          d={pathData}
+          stroke="currentColor"
           strokeWidth="1.2"
           strokeLinecap="round"
           opacity="0.18" // Very faint, subtle background track
         />
 
         {/* Glowing Decaying Particle Dot - Outer Halo (Soft/Wide Glow) */}
-        <circle 
-          cx={dotPos.x} 
-          cy={dotPos.y} 
-          r={dotPos.size * 1.8} 
-          fill="currentColor" 
+        <circle
+          cx={dotPos.x}
+          cy={dotPos.y}
+          r={dotPos.size * 1.8}
+          fill="currentColor"
           filter="url(#glow-particle)"
           style={{
             opacity: dotPos.opacity * 0.35,
@@ -141,11 +141,11 @@ export default function BubbleChamber() {
         />
 
         {/* Glowing Decaying Particle Dot - Mid Glow (Medium intensity) */}
-        <circle 
-          cx={dotPos.x} 
-          cy={dotPos.y} 
-          r={dotPos.size * 1.0} 
-          fill="currentColor" 
+        <circle
+          cx={dotPos.x}
+          cy={dotPos.y}
+          r={dotPos.size * 1.0}
+          fill="currentColor"
           filter="url(#glow-particle)"
           style={{
             opacity: dotPos.opacity * 0.75,
@@ -154,11 +154,11 @@ export default function BubbleChamber() {
         />
 
         {/* Glowing Decaying Particle Dot - Inner Core (High-intensity Center) */}
-        <circle 
-          cx={dotPos.x} 
-          cy={dotPos.y} 
-          r={dotPos.size * 0.4} 
-          fill="#ffffff" 
+        <circle
+          cx={dotPos.x}
+          cy={dotPos.y}
+          r={dotPos.size * 0.4}
+          fill="#ffffff"
           style={{
             opacity: dotPos.opacity * 0.95,
             transition: 'opacity 0.05s ease',
