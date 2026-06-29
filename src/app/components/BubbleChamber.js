@@ -6,9 +6,9 @@ import React, { useEffect, useRef, useState } from 'react';
 const generateLogSpiralPath = () => {
   const cx = 580; // Center X shifted to the right
   const cy = 320; // Center Y
-  let path = "M 580,0 L 580,100 ";
+  let path = "M 580,0 L 580,160 ";
 
-  const r0 = 200; // Starting radius at start of spiral relative to (580, 320)
+  const r0 = 160; // Starting radius at start of spiral relative to (580, 320)
   const k = 0.125; // Decay rate
   const startAngle = -Math.PI / 2; // Starts pointing straight up
   const points = 240;
