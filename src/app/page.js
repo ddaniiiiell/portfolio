@@ -52,7 +52,7 @@ export default function Home() {
       liveLink: 'https://doi.org/10.1016/j.net.2025.103603',
       pdfLink: '/papers/monkey-anatomical-posture-modeler.pdf',
       imageUrl: '/images/posture_modeler_abstract.jpg',
-      imagePosition: 'center 58%',
+      imagePosition: 'center 18%',
     },
     {
       title: 'Internal Radiation Source Solver',
@@ -65,7 +65,7 @@ export default function Home() {
       liveLink: 'https://doi.org/10.1016/j.radphyschem.2025.112549',
       pdfLink: '/papers/internal-radiation-source-solver.pdf',
       imageUrl: '/images/internal_source_abstract.jpg',
-      imagePosition: 'center 72%',
+      imagePosition: 'center 8%',
     },
   ];
 
