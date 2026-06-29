@@ -237,7 +237,7 @@ export default function Home() {
               <div>
                 <h3 className="contact-info-title">Contact Information</h3>
                 <p className="contact-info-desc" style={{ marginBottom: '2rem' }}>
-                  Feel free to reach out via email or text.
+                  Feel free to reach out via email or text!
                 </p>
                 
                 <div className="contact-details">

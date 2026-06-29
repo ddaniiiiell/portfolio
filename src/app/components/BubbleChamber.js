@@ -53,10 +53,9 @@ export default function BubbleChamber() {
       try {
         const point = path.getPointAtLength(currentLength);
         
-        // Calculate decay scaling
-        // As the particle goes down the path (progress: 0 to 1), it shrinks and fades
-        const size = 6.5 * (1 - progress); 
-        const opacity = 1 - progress;
+        // Slower decay scaling (retains size/brightness longer, then drops off near the core)
+        const size = 6.5 * Math.pow(1 - progress, 0.4); 
+        const opacity = Math.pow(1 - progress, 0.6);
 
         setDotPos({
           x: point.x,
@@ -129,24 +128,37 @@ export default function BubbleChamber() {
           opacity="0.12"
         />
 
-        {/* Glowing Decaying Particle Dot - Outer Halo Glow */}
+        {/* Glowing Decaying Particle Dot - Outer Halo (Soft/Wide Glow) */}
         <circle 
           cx={dotPos.x} 
           cy={dotPos.y} 
-          r={dotPos.size * 1.5} 
+          r={dotPos.size * 1.8} 
           fill="currentColor" 
           filter="url(#glow-particle)"
           style={{
-            opacity: dotPos.opacity * 0.7,
+            opacity: dotPos.opacity * 0.35,
             transition: 'opacity 0.05s ease',
           }}
         />
 
-        {/* Glowing Decaying Particle Dot - Inner High-intensity Core */}
+        {/* Glowing Decaying Particle Dot - Mid Glow (Medium intensity) */}
         <circle 
           cx={dotPos.x} 
           cy={dotPos.y} 
-          r={dotPos.size * 0.6} 
+          r={dotPos.size * 1.0} 
+          fill="currentColor" 
+          filter="url(#glow-particle)"
+          style={{
+            opacity: dotPos.opacity * 0.75,
+            transition: 'opacity 0.05s ease',
+          }}
+        />
+
+        {/* Glowing Decaying Particle Dot - Inner Core (High-intensity Center) */}
+        <circle 
+          cx={dotPos.x} 
+          cy={dotPos.y} 
+          r={dotPos.size * 0.4} 
           fill="#ffffff" 
           style={{
             opacity: dotPos.opacity * 0.95,
