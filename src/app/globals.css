@@ -10,7 +10,7 @@
   --accent-secondary: #bab8b0;
   --accent-glow: rgba(230, 228, 222, 0.04);
   
-  --text-primary: #e6e4de;
+  --text-primary: #f3f2ee; /* Slightly brightened cream white */
   --text-secondary: #a8a69e;
   --text-muted: #75746e;
   
@@ -26,25 +26,25 @@
 }
 
 [data-theme="light"] {
-  /* Optional Light Mode Overrides */
-  --bg-primary: #f8fafc;
+  /* Soft Lavender Purple and White Theme Overrides */
+  --bg-primary: #faf9fc;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f5f9;
+  --bg-tertiary: #f5f3f7;
   
-  --accent-primary: #4f46e5;
-  --accent-secondary: #9333ea;
-  --accent-glow: rgba(79, 70, 229, 0.1);
+  --accent-primary: #845ef7; /* Soft violet purple */
+  --accent-secondary: #b07cf0; /* Light pastel lavender */
+  --accent-glow: rgba(132, 94, 247, 0.08);
   
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #211a2e; /* Deep purple-black */
+  --text-secondary: #5a506a; /* Muted lavender grey */
+  --text-muted: #9c92ac; /* Muted light lavender */
   
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(79, 70, 229, 0.3);
+  --border-color: rgba(132, 94, 247, 0.08);
+  --border-hover: rgba(132, 94, 247, 0.25);
   
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.08);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(132, 94, 247, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(132, 94, 247, 0.04);
 }
 
 * {
