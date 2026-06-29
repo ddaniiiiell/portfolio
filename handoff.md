@@ -6,19 +6,21 @@ This project is a high-fidelity, dynamic portfolio website built using **Next.js
 
 ## 📂 Project Structure
 
-Here is a breakdown of the files that have been created in this workspace:
+Here is a breakdown of the files in this workspace:
 *   [package.json](file:///Users/daniellee/Downloads/%23personal/portfolio/package.json): Handles dependencies (Next.js, React, Lucide-react, Framer-motion) and scripts.
 *   [next.config.mjs](file:///Users/daniellee/Downloads/%23personal/portfolio/next.config.mjs): Core configuration for the Next.js framework.
-*   [jsconfig.json](file:///Users/daniellee/Downloads/%23personal/portfolio/jsconfig.json): Absolute import mapping configuration (e.g. using `@/*` relative to root).
+*   [jsconfig.json](file:///Users/daniellee/Downloads/%23personal/portfolio/jsconfig.json): Absolute import mapping configuration (using `@/*` relative to root).
 *   [.gitignore](file:///Users/daniellee/Downloads/%23personal/portfolio/.gitignore): Specifies build artifacts, environment files, and node modules to ignore in Git.
 *   [src/app/layout.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/layout.js): Root layout. Establishes the HTML structure, SEO metadata, and background glow styling.
 *   [src/app/globals.css](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/globals.css): Central stylesheet containing custom design tokens, dark theme parameters, keyframes, scrollbar settings, and component styles.
-*   [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js): Core portfolio page rendering the interactive sections: Hero, Projects, Experience, GitHub Feed, and Contact.
-*   [src/app/components/Navbar.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/Navbar.js): Fixed client-side navbar featuring responsive collapsible menu and dark/light theme switching.
-*   [src/app/components/ProjectCard.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/ProjectCard.js): Cards with hover zoom effects, tags, and codebase/live links.
-*   [src/app/components/ContactForm.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/ContactForm.js): Form handling frontend verification and submission statuses.
+*   [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js): Core portfolio page rendering the interactive sections: Hero (Home), Research Abstracts, Experience, Beyond Physics (Hobbies), and Let's Connect (Contact).
+*   [src/app/components/Navbar.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/Navbar.js): Fixed client-side navbar featuring responsive collapsible menu and dark/light theme switching. Includes the custom Outlined Star logo.
+*   [src/app/components/ProjectCard.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/ProjectCard.js): Cards with hover zoom effects, tags, publication dates, and AAPM presentation badges.
+*   [src/app/components/GridPattern.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/GridPattern.js): Spacetime gravity warp canvas grid background with actively generated, slow-twinkling stars that warp around the cursor.
+*   [src/app/components/BubbleChamber.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/BubbleChamber.js): Programmatic circular logarithmic decay spiral rendering a three-layer glowing, decaying particle travel animation.
+*   [src/app/components/CTHelix.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/CTHelix.js): Custom 3D rotating helical scanner graphic with laser scan sweeps, which sits horizontally underneath your contact information.
+*   [src/app/components/ContactForm.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/ContactForm.js): Form handling contact messages, validation, and submission state.
 *   [src/app/api/contact/route.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/api/contact/route.js): Serverless endpoint processing the contact form submissions.
-*   [src/app/api/github/route.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/api/github/route.js): Serverless endpoint dynamically loading GitHub repositories, providing high-fidelity fallback states.
 
 ---
 
@@ -61,7 +63,7 @@ To push this codebase to your GitHub account:
 2.  **Add and Commit your files**:
     ```bash
     git add .
-    git commit -m "Initial commit: Next.js portfolio website"
+    git commit -m "feat: complete portfolio improvements"
     ```
 3.  **Link to a GitHub Repository**:
     *   Go to [GitHub](https://github.com) and create a new repository named `portfolio` (leave it empty without initializing README or gitignore).
@@ -99,8 +101,10 @@ Vercel provides native, optimized hosting for Next.js with automatic continuous 
 ## 🎨 Customizing Content
 
 When you want to tweak or customize the portfolio contents:
-*   **Projects:** Edit the `projects` array inside [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L26-L54) to add your custom links, names, descriptions, and category tags.
-*   **Experience Timeline:** Edit the `experience` array in [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L56-L70).
-*   **Bio / Headline:** Edit the heading elements inside the Hero markup in [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L81-L98).
-*   **Social & Contact Info:** Change the social icons, email addresses, and phone numbers in [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L228-L260).
-*   **Visual Style / Colors:** Adjust colors (gradients, border tints, glow effects) by tweaking the CSS variables in the `:root` element of [src/app/globals.css](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/globals.css#L3-L20).
+*   **Research Abstracts (Publications):** Edit the `projects` array inside [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L33-L64) to modify links, titles, descriptions, dates, or AAPM presentation tags.
+*   **Experience Timeline:** Edit the `experience` array in [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L65-L81).
+*   **Beyond Physics (Hobbies):** Edit the cards array in the hobbies section markup of [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L190-L245).
+*   **Social & Contact Info:** Change the contact details, phone numbers, and addresses in [src/app/page.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/page.js#L250-L285).
+*   **Visual Style / Colors:** Adjust colors by tweaking the CSS variables inside `:root` (dark mode) or `[data-theme="light"]` (light mode, soft purple/white theme) of [src/app/globals.css](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/globals.css#L3-L45).
+*   **Spacetime Stars Grid:** Edit background star numbers, pulse rates, or warping coefficients in [src/app/components/GridPattern.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/GridPattern.js).
+*   **Decay Spiral Animation:** Modify decay speeds or coordinate dimensions in [src/app/components/BubbleChamber.js](file:///Users/daniellee/Downloads/%23personal/portfolio/src/app/components/BubbleChamber.js).
