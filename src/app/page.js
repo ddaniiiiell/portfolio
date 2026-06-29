@@ -5,6 +5,7 @@ import { Github, Linkedin, Mail, Phone, MapPin, Star, GitFork, ArrowUpRight, Awa
 import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
 import ContactForm from './components/ContactForm';
+import CTHelix from './components/CTHelix';
 
 export default function Home() {
   const [selectedFilter, setSelectedFilter] = useState('All');
@@ -93,34 +94,40 @@ export default function Home() {
       <main className="container">
         {/* Hero Section */}
         <section id="home" className="hero-section">
-          <div className="hero-content">
-            <span className="hero-badge">Applied Physics</span>
-            <h1 className="hero-title">
-              Hi, I'm{' '}
-              <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
-                <span className="hero-star hero-star-left">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                  </svg>
+          <div className="hero-grid-wrapper">
+            <div className="hero-content">
+              <span className="hero-badge">Applied Physics</span>
+              <h1 className="hero-title">
+                Hi, I'm{' '}
+                <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
+                  <span className="hero-star hero-star-left">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                  Daniel Lee
+                  <span className="hero-star hero-star-right">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
+                    </svg>
+                  </span>
                 </span>
-                Daniel Lee
-                <span className="hero-star hero-star-right">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                  </svg>
-                </span>
-              </span>
-            </h1>
-            <p className="hero-subtitle">
-              Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.
-            </p>
-            <div className="hero-cta">
-              <a href="#projects" className="btn-primary">
-                <span className="btn-text" data-text="View My Projects">View My Projects</span> <ArrowUpRight size={18} />
-              </a>
-              <a href="#contact" className="btn-secondary">
-                <span className="btn-text" data-text="Get in Touch">Get in Touch</span>
-              </a>
+              </h1>
+              <p className="hero-subtitle">
+                Applied Physics student at the University of Maryland, College Park, focusing on computational modeling, medical imaging analysis, and bioengineering simulations.
+              </p>
+              <div className="hero-cta">
+                <a href="#projects" className="btn-primary">
+                  <span className="btn-text" data-text="View My Projects">View My Projects</span> <ArrowUpRight size={18} />
+                </a>
+                <a href="#contact" className="btn-secondary">
+                  <span className="btn-text" data-text="Get in Touch">Get in Touch</span>
+                </a>
+              </div>
+            </div>
+            
+            <div className="hero-visual">
+              <CTHelix />
             </div>
           </div>
         </section>
