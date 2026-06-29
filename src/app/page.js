@@ -34,6 +34,7 @@ export default function Home() {
     {
       title: 'CT Scan Radiation Exposure Simulator',
       date: 'Published: 2024',
+      presentation: 'AAPM 2024 (Los Angeles, CA)',
       description: 'Estimation of radiation dose for COVID-19 patients undergoing computed tomography exams to optimize patient health safety. Published in Radiation Physics and Chemistry.',
       tags: ['MATLAB', 'Medical Imaging', 'Data Analysis'],
       category: 'Research',
@@ -54,6 +55,7 @@ export default function Home() {
     {
       title: 'Internal Radiation Source Solver',
       date: 'Published: 2025',
+      presentation: 'AAPM 2025 (Washington, DC)',
       description: 'Calculates S-values for voxel monkey computational models exposed to internally distributed radiation sources. Published in Radiation Physics and Chemistry.',
       tags: ['Python', 'Applied Physics', 'Monte Carlo Sim'],
       category: 'Computational Modeling',

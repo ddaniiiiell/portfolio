@@ -2,7 +2,7 @@
 
 import { Github, ExternalLink, Code } from 'lucide-react';
 
-export default function ProjectCard({ title, date, description, tags, githubLink, liveLink, imageUrl }) {
+export default function ProjectCard({ title, date, presentation, description, tags, githubLink, liveLink, imageUrl }) {
   return (
     <div className="project-card">
       <div className="project-image-container">
@@ -19,20 +19,51 @@ export default function ProjectCard({ title, date, description, tags, githubLink
       </div>
       <div className="project-content">
         <h3 className="project-title">{title}</h3>
-        {date && (
-          <span 
-            className="project-date" 
+        {(date || presentation) && (
+          <div 
             style={{ 
-              display: 'block', 
-              fontSize: '0.85rem', 
-              color: 'var(--text-secondary)', 
+              display: 'flex', 
+              gap: '0.6rem', 
+              alignItems: 'center', 
               marginBottom: '0.75rem', 
-              fontFamily: 'var(--font-display)', 
-              fontWeight: '500' 
+              flexWrap: 'wrap' 
             }}
           >
-            {date}
-          </span>
+            {date && (
+              <span 
+                className="project-date" 
+                style={{ 
+                  fontSize: '0.85rem', 
+                  color: 'var(--text-secondary)', 
+                  fontFamily: 'var(--font-display)', 
+                  fontWeight: '500' 
+                }}
+              >
+                {date}
+              </span>
+            )}
+            {date && presentation && (
+              <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--text-muted)' }} />
+            )}
+            {presentation && (
+              <span 
+                className="project-presentation-badge" 
+                style={{ 
+                  fontSize: '0.75rem', 
+                  background: 'var(--accent-glow)', 
+                  color: 'var(--accent-primary)', 
+                  padding: '2px 8px', 
+                  borderRadius: '4px', 
+                  border: '1px solid var(--border-color)', 
+                  fontFamily: 'var(--font-display)', 
+                  fontWeight: '600',
+                  letterSpacing: '0.01em'
+                }}
+              >
+                {presentation}
+              </span>
+            )}
+          </div>
         )}
         <p className="project-description">{description}</p>
         <div className="project-tags">
