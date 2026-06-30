@@ -199,7 +199,7 @@ export default function Home() {
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               </div>
-              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Photography</h3>
                 <p className="github-repo-desc">Capturing visual frames, playing with lighting, natural shadows, and urban architectures through the lens of a camera.</p>
                 <button
@@ -208,6 +208,7 @@ export default function Home() {
                   aria-expanded={showPhotographyGallery}
                   aria-controls="photography-gallery"
                   onClick={() => setShowPhotographyGallery((isOpen) => !isOpen)}
+                  style={{ marginTop: 'auto' }}
                 >
                   <Camera size={16} /> {showPhotographyGallery ? 'Hide Photos' : 'View More'}
                 </button>
@@ -223,9 +224,30 @@ export default function Home() {
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               </div>
-              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Playing Cello</h3>
                 <p className="github-repo-desc">Exploring strings, playing classical compositions, and practicing the deep, resonant harmonies of the cello.</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', borderTop: '1px solid var(--border-color)', paddingTop: '0.75rem', marginTop: 'auto' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Key Achievements</span>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>1st Place, American Protégé Concerto Competition (2023)</span>
+                    </li>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>2nd Place, Golden Classical Music Awards (2023)</span>
+                    </li>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>1st Place, Crescendo & Elite Int'l Competitions (2021)</span>
+                    </li>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>Maryland All State Ensembles Cello (2022–2024)</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -238,18 +260,36 @@ export default function Home() {
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
               </div>
-              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Music & Vocal Performance</h3>
                 <p className="github-repo-desc">A deep passion for music, performing classical vocal arts, singing in ensembles, and exploring new musical styles.</p>
-                <a
-                  href="https://www.youtube.com/@ddaniiiiell"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hobby-link"
-                  aria-label="Open Daniel Lee's YouTube channel"
-                >
-                  <Youtube size={16} /> YouTube Channel
-                </a>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', borderTop: '1px solid var(--border-color)', paddingTop: '0.75rem', marginTop: 'auto' }}>
+                  <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performances & Covers</span>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>Uploaded vocal covers on YouTube</span>
+                    </li>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>Performed at UMD TASA's Coffee House</span>
+                    </li>
+                    <li style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'flex-start', gap: '0.4rem' }}>
+                      <span style={{ color: 'var(--accent-primary)', marginTop: '0.15rem' }}>•</span>
+                      <span>Performed at UMD KSA's Night in Korea event</span>
+                    </li>
+                  </ul>
+                  <a
+                    href="https://www.youtube.com/@ddaniiiiell"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hobby-link"
+                    aria-label="Open Daniel Lee's YouTube channel"
+                    style={{ marginTop: '0.25rem' }}
+                  >
+                    <Youtube size={16} /> YouTube Channel
+                  </a>
+                </div>
               </div>
             </div>
           </div>
