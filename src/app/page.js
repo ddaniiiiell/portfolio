@@ -91,11 +91,19 @@ export default function Home() {
     },
   ];
 
+  // Add your photos to the gallery array below. 
+  // If the last row contains less than 3 photos, they will automatically center on desktop.
   const photographyGallery = [
     {
       src: '/images/hobby_photography.jpg',
-      alt: 'Photography sample',
+      alt: 'Urban/Nature frame',
     },
+    /*
+    {
+      src: '/images/photo2.jpg',
+      alt: 'Describe your photo here',
+    },
+    */
   ];
 
   // Render all projects directly without filter tags
@@ -201,7 +209,7 @@ export default function Home() {
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Photography</h3>
-                <p className="github-repo-desc">Capturing visual frames, playing with lighting, natural shadows, and urban architectures through the lens of a camera.</p>
+                <p className="github-repo-desc" style={{ flexGrow: 0 }}>Capturing visual frames, playing with lighting, natural shadows, and urban architectures through the lens of a camera.</p>
                 <button
                   type="button"
                   className="hobby-link hobby-button"
@@ -226,7 +234,7 @@ export default function Home() {
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Playing Cello</h3>
-                <p className="github-repo-desc">Exploring strings, playing classical compositions, and practicing the deep, resonant harmonies of the cello.</p>
+                <p className="github-repo-desc" style={{ flexGrow: 0 }}>Exploring strings, playing classical compositions, and practicing the deep, resonant harmonies of the cello.</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', borderTop: '1px solid var(--border-color)', paddingTop: '0.75rem', marginTop: 'auto' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Key Achievements</span>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
@@ -262,7 +270,7 @@ export default function Home() {
               </div>
               <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', flexGrow: 1 }}>
                 <h3 className="github-repo-name" style={{ fontSize: '1.2rem' }}>Music & Vocal Performance</h3>
-                <p className="github-repo-desc">A deep passion for music, performing classical vocal arts, singing in ensembles, and exploring new musical styles.</p>
+                <p className="github-repo-desc" style={{ flexGrow: 0 }}>A deep passion for music, performing classical vocal arts, singing in ensembles, and exploring new musical styles.</p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', borderTop: '1px solid var(--border-color)', paddingTop: '0.75rem', marginTop: 'auto' }}>
                   <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Performances & Covers</span>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
