@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Camera, Github, Linkedin, Mail, Phone, MapPin, ArrowUpRight, Youtube } from 'lucide-react';
+import { Camera, Github, Linkedin, Mail, Phone, MapPin, ArrowUpRight, Youtube, X } from 'lucide-react';
 import Navbar from './components/Navbar';
 import ProjectCard from './components/ProjectCard';
 import CTHelix from './components/CTHelix';
@@ -11,6 +11,7 @@ export default function Home() {
   const [githubData, setGithubData] = useState(null);
   const [githubLoading, setGithubLoading] = useState(true);
   const [showPhotographyGallery, setShowPhotographyGallery] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   // Fetch GitHub repos dynamically
   useEffect(() => {
@@ -94,16 +95,25 @@ export default function Home() {
   // Add your photos to the gallery array below. 
   // If the last row contains less than 3 photos, they will automatically center on desktop.
   const photographyGallery = [
-    {
-      src: '/images/hobby_photography.jpg',
-      alt: 'Urban/Nature frame',
-    },
-    /*
-    {
-      src: '/images/photo2.jpg',
-      alt: 'Describe your photo here',
-    },
-    */
+    { src: '/images/IMG_4460.jpg', alt: 'Light & shadow detail' },
+    { src: '/images/IMG_4780.jpg', alt: 'Urban composition' },
+    { src: '/images/IMG_5689.jpg', alt: 'Architectural frame' },
+    { src: '/images/DSC01517.JPG', alt: 'Nature frame' },
+    { src: '/images/DSCF0041.jpg', alt: 'Street perspective' },
+    { src: '/images/DSCF0044.jpg', alt: 'Urban exploration' },
+    { src: '/images/DSCF0069.jpg', alt: 'Candid capture' },
+    { src: '/images/DSCF0126.jpg', alt: 'Geometric symmetry' },
+    { src: '/images/DSCF1305.jpg', alt: 'Sunset shadow' },
+    { src: '/images/DSCF1689.jpg', alt: 'Cityscape study' },
+    { src: '/images/DSCF1697.jpg', alt: 'Landscape depth' },
+    { src: '/images/DSCF1714.jpg', alt: 'Light texture' },
+    { src: '/images/DSCF1760.jpg', alt: 'Architectural geometry' },
+    { src: '/images/DSCF7118.jpg', alt: 'Monochrome frame' },
+    { src: '/images/DSCF7181.jpg', alt: 'Natural light' },
+    { src: '/images/DSCF8357.jpg', alt: 'Reflections' },
+    { src: '/images/DSCF8466.jpg', alt: 'Atmospheric depth' },
+    { src: '/images/DSCF9357.jpg', alt: 'Focus study' },
+    { src: '/images/F28F3A2A-5C3E-4C5E-8905-FC329889E556.JPG', alt: 'Urban twilight' },
   ];
 
   // Render all projects directly without filter tags
@@ -305,7 +315,12 @@ export default function Home() {
           {showPhotographyGallery && (
             <div id="photography-gallery" className="photography-gallery" aria-label="Photography gallery">
               {photographyGallery.map((photo) => (
-                <figure key={photo.src} className="photography-gallery-item">
+                <figure 
+                  key={photo.src} 
+                  className="photography-gallery-item"
+                  onClick={() => setSelectedPhoto(photo)}
+                  style={{ cursor: 'pointer' }}
+                >
                   <img src={photo.src} alt={photo.alt} />
                 </figure>
               ))}
@@ -387,6 +402,81 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Lightbox Modal */}
+      {selectedPhoto && (
+        <div 
+          className="lightbox-overlay" 
+          onClick={() => setSelectedPhoto(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            backdropFilter: 'blur(8px)',
+            cursor: 'zoom-out',
+          }}
+        >
+          <button 
+            onClick={(e) => { e.stopPropagation(); setSelectedPhoto(null); }}
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              borderRadius: '50%',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#fff',
+              cursor: 'pointer',
+              transition: 'background 0.2s, transform 0.2s',
+            }}
+            aria-label="Close lightbox"
+          >
+            <X size={24} />
+          </button>
+          <div 
+            style={{
+              position: 'relative',
+              maxWidth: '90%',
+              maxHeight: '90%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+              cursor: 'default'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={selectedPhoto.src} 
+              alt={selectedPhoto.alt} 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '80vh', 
+                borderRadius: '8px', 
+                boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                objectFit: 'contain'
+              }} 
+            />
+            {selectedPhoto.alt && (
+              <p style={{ color: '#fff', fontSize: '0.9rem', fontFamily: 'var(--font-display)', opacity: 0.8 }}>
+                {selectedPhoto.alt}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }
