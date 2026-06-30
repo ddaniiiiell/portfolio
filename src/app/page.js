@@ -131,36 +131,7 @@ export default function Home() {
             <h1 className="hero-title">
               Hi, I'm{' '}
               <span className="hero-name-container" style={{ position: 'relative', display: 'inline-block' }}>
-                <span className="hero-star hero-star-left">
-                  <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                  </svg>
-                </span>
-                Dani
-                <span style={{ position: 'relative', display: 'inline-block' }}>
-                  e
-                  <span 
-                    className="hero-star" 
-                    style={{ 
-                      top: '1.15em', 
-                      left: '50%', 
-                      transform: 'translateX(-50%)', 
-                      width: '36px', 
-                      height: '36px',
-                      animationDelay: '1s'
-                    }}
-                  >
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                    </svg>
-                  </span>
-                </span>
-                l Lee
-                <span className="hero-star hero-star-right">
-                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="currentColor" />
-                  </svg>
-                </span>
+                Daniel Lee
               </span>
             </h1>
             <p className="hero-subtitle">
