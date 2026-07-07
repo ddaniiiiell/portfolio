@@ -1,24 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Dark Mode Default Theme Tokens (Warm Minimalist Grey) */
+  /* Dark Mode Default Theme Tokens (Cool Silver Grey) */
   --bg-primary: #0a0a09;
   --bg-secondary: #121211;
   --bg-tertiary: #1b1b1a;
   
-  --accent-primary: #e6e4de;
-  --accent-secondary: #bab8b0;
-  --accent-glow: rgba(230, 228, 222, 0.04);
+  --accent-primary: #dfe4ea;
+  --accent-secondary: #bcc5ce;
+  --accent-glow: rgba(223, 228, 234, 0.04);
   
-  --text-primary: #f3f2ee; /* Slightly brightened cream white */
-  --text-secondary: #a8a69e;
-  --text-muted: #75746e;
+  --text-primary: #f3f6f9; /* Slightly brightened cool white */
+  --text-secondary: #aab4be;
+  --text-muted: #818b95;
   
-  --border-color: rgba(230, 228, 222, 0.07);
-  --border-hover: rgba(230, 228, 222, 0.2);
+  --border-color: rgba(223, 228, 234, 0.07);
+  --border-hover: rgba(223, 228, 234, 0.2);
   
   --glass-bg: rgba(18, 18, 17, 0.85);
-  --glass-border: rgba(230, 228, 222, 0.07);
+  --glass-border: rgba(223, 228, 234, 0.07);
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 
   --font-sans: 'Plus Jakarta Sans', sans-serif;
@@ -167,7 +167,7 @@ h1, h2, h3, h4, h5, h6 {
 .glass-card:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px 0 rgba(230, 228, 222, 0.05);
+  box-shadow: 0 12px 40px 0 rgba(223, 228, 234, 0.05);
 }
 
 /* Interactive Buttons */
@@ -186,14 +186,14 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(230, 228, 222, 0.1);
+  box-shadow: 0 4px 14px rgba(223, 228, 234, 0.1);
   overflow: hidden !important;
   position: relative;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(230, 228, 222, 0.2);
+  box-shadow: 0 6px 20px rgba(223, 228, 234, 0.2);
 }
 
 .btn-secondary {
@@ -387,7 +387,7 @@ h1, h2, h3, h4, h5, h6 {
 .project-card:hover {
   transform: translateY(-8px);
   border-color: var(--border-hover);
-  box-shadow: 0 20px 40px rgba(230, 228, 222, 0.08);
+  box-shadow: 0 20px 40px rgba(223, 228, 234, 0.08);
 }
 
 .project-image-container {
@@ -557,7 +557,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 14px rgba(230, 228, 222, 0.1);
+  box-shadow: 0 4px 14px rgba(223, 228, 234, 0.1);
   margin-top: 0.5rem;
   overflow: hidden !important;
   position: relative;
@@ -565,7 +565,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .form-submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(230, 228, 222, 0.2);
+  box-shadow: 0 6px 20px rgba(223, 228, 234, 0.2);
 }
 
 .form-submit-btn:disabled {
@@ -769,7 +769,7 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--accent-primary);
   color: var(--bg-primary);
   border-color: var(--accent-primary);
-  box-shadow: 0 4px 12px rgba(230, 228, 222, 0.15);
+  box-shadow: 0 4px 12px rgba(223, 228, 234, 0.15);
 }
 
 .projects-grid {
@@ -1235,8 +1235,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 100vw;
   height: 100vh;
   background-image: 
-    linear-gradient(to right, rgba(230, 228, 222, 0.015) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(230, 228, 222, 0.015) 1px, transparent 1px);
+    linear-gradient(to right, rgba(223, 228, 234, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(223, 228, 234, 0.015) 1px, transparent 1px);
   background-size: 10vw 10vh;
   pointer-events: none;
   z-index: -2;
