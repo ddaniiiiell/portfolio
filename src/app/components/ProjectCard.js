@@ -28,10 +28,9 @@ export default function ProjectCard({ title, date, presentation, description, ta
           <div 
             style={{ 
               display: 'flex', 
-              gap: '0.6rem', 
-              alignItems: 'center', 
-              marginBottom: '0.75rem', 
-              flexWrap: 'wrap' 
+              flexDirection: 'column',
+              gap: '0.25rem',
+              marginBottom: '0.75rem'
             }}
           >
             {date && (
@@ -47,9 +46,6 @@ export default function ProjectCard({ title, date, presentation, description, ta
                 {date}
               </span>
             )}
-            {date && presentation && (
-              <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--text-muted)' }} />
-            )}
             {presentation && (
               <span 
                 className="project-presentation-badge" 
@@ -62,7 +58,8 @@ export default function ProjectCard({ title, date, presentation, description, ta
                   border: '1px solid var(--border-color)', 
                   fontFamily: 'var(--font-display)', 
                   fontWeight: '600',
-                  letterSpacing: '0.01em'
+                  letterSpacing: '0.01em',
+                  alignSelf: 'flex-start'
                 }}
               >
                 {presentation}
