@@ -36,6 +36,7 @@ export default function Home() {
       title: 'Internal Radiation Source Solver',
       date: 'Published: 2025',
       presentation: 'AAPM 2025 (Washington, DC)',
+      publication: 'Radiation Physics and Chemistry',
       description: 'Calculates S-values for voxel monkey computational models exposed to internally distributed radiation sources. Published in Radiation Physics and Chemistry.',
       tags: ['Python', 'MCNP6', 'Monte Carlo', 'S-Value Dosimetry', 'SAF Analysis', 'Voxel Modeling'],
       category: 'Computational Modeling',
@@ -48,6 +49,7 @@ export default function Home() {
     {
       title: 'Monkey Anatomical Posture Modeler',
       date: 'Published: 2025',
+      publication: 'Nuclear Engineering and Technology',
       description: 'Organ dose simulations for voxel-based monkey anatomical models under external photon fields. Published in Nuclear Engineering and Technology.',
       tags: ['C++', 'Java', 'MCNP6', 'Monte Carlo', 'Voxel Modeling', 'Dose Coefficients', 'Radiation Transport'],
       category: 'Computational Modeling',
@@ -61,6 +63,7 @@ export default function Home() {
       title: 'CT Scan Radiation Exposure Simulator',
       date: 'Published: 2024',
       presentation: 'AAPM 2024 (Los Angeles, CA)',
+      publication: 'Radiation Physics and Chemistry',
       description: 'Estimation of radiation dose for COVID-19 patients undergoing computed tomography exams to optimize patient health safety. Published in Radiation Physics and Chemistry.',
       tags: ['MATLAB', 'NCICT', 'Medical Imaging', 'CTDI/DLP Analysis', 'Organ Dosimetry', 'Uncertainty Propagation', 'Data Analysis'],
       category: 'Research',

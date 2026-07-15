@@ -2,7 +2,7 @@
 
 import { ExternalLink, FileText } from 'lucide-react';
 
-export default function ProjectCard({ title, date, presentation, description, tags, liveLink, pdfLink, imageUrl, imagePosition = 'center' }) {
+export default function ProjectCard({ title, date, presentation, publication, description, tags, liveLink, pdfLink, imageUrl, imagePosition = 'center' }) {
   return (
     <div className="project-card">
       <div className="project-image-container">
@@ -24,7 +24,7 @@ export default function ProjectCard({ title, date, presentation, description, ta
       </div>
       <div className="project-content">
         <h3 className="project-title">{title}</h3>
-        {(date || presentation) && (
+        {(date || presentation || publication) && (
           <div 
             style={{ 
               display: 'flex', 
@@ -63,6 +63,19 @@ export default function ProjectCard({ title, date, presentation, description, ta
                 }}
               >
                 {presentation}
+              </span>
+            )}
+            {publication && (
+              <span
+                className="project-publication"
+                style={{
+                  fontSize: '0.8rem',
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: '500'
+                }}
+              >
+                Published in {publication}
               </span>
             )}
           </div>
